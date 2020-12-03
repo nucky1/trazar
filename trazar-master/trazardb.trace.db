@@ -1,0 +1,24 @@
+2020-11-16 16:15:30 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "SELECT * FROM LOCALES LOCALES LOCALES[*]"
+Syntax error in SQL statement "SELECT * FROM LOCALES LOCALES LOCALES[*]"; SQL statement:
+SELECT * FROM LOCALES LOCALES LOCALES [42000-200]
+2020-11-19 14:33:07 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Valor demasiado largo para la columna "PASSWORD VARCHAR(50)": "'$2a$10$Crnks5j8bE3msB54X7fUs.kjleZuJve28Gfv12mNmsl2g0gTEem8m' (60)"
+Value too long for column "PASSWORD VARCHAR(50)": "'$2a$10$Crnks5j8bE3msB54X7fUs.kjleZuJve28Gfv12mNmsl2g0gTEem8m' (60)"; SQL statement:
+insert into usuario (id, password, user_name) values (null, ?, ?) [22001-200]
+2020-11-19 14:34:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Valor demasiado largo para la columna "PASSWORD VARCHAR(50)": "'$2a$10$m43g0wcwMgzz3yOEa1h2N.0P2ivBz4U0Il9dYBMnxHBwhR6JeP6He' (60)"
+Value too long for column "PASSWORD VARCHAR(50)": "'$2a$10$m43g0wcwMgzz3yOEa1h2N.0P2ivBz4U0Il9dYBMnxHBwhR6JeP6He' (60)"; SQL statement:
+insert into usuario (id, password, user_name) values (null, ?, ?) [22001-200]
+2020-11-19 14:34:02 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Valor demasiado largo para la columna "PASSWORD VARCHAR(50)": "'$2a$10$NBEZfguLQVYpqjmuVRy6kOz/yK4z5HJwpQvh4JQpxFgLsoJYDi/2u' (60)"
+Value too long for column "PASSWORD VARCHAR(50)": "'$2a$10$NBEZfguLQVYpqjmuVRy6kOz/yK4z5HJwpQvh4JQpxFgLsoJYDi/2u' (60)"; SQL statement:
+insert into usuario (id, password, user_name) values (null, ?, ?) [22001-200]
+2020-11-19 14:34:22 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Valor demasiado largo para la columna "PASSWORD VARCHAR(50)": "'$2a$10$iDMYifzZvKf6VUUwnXPsBuNcaZUC9cFinHSDogVvfHYa5K6OmmBSa' (60)"
+Value too long for column "PASSWORD VARCHAR(50)": "'$2a$10$iDMYifzZvKf6VUUwnXPsBuNcaZUC9cFinHSDogVvfHYa5K6OmmBSa' (60)"; SQL statement:
+insert into usuario (id, password, user_name) values (null, ?, ?) [22001-200]
+2020-11-19 14:36:19 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Valor demasiado largo para la columna "PASSWORD VARCHAR(50)": "'$2a$10$5dOqzyUo4Y4uoIaPy/wI/OBpxV899/ghbPilzHQPbo3SM5GrkM.Bq' (60)"
+Value too long for column "PASSWORD VARCHAR(50)": "'$2a$10$5dOqzyUo4Y4uoIaPy/wI/OBpxV899/ghbPilzHQPbo3SM5GrkM.Bq' (60)"; SQL statement:
+insert into usuario (id, password, user_name) values (null, ?, ?) [22001-200]
