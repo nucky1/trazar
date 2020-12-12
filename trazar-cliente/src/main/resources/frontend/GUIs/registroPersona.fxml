@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="469.0" prefWidth="510.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <SplitPane dividerPositions="0.33547008547008544, 0.8867521367521367" orientation="VERTICAL" prefHeight="470.0" prefWidth="510.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <AnchorPane layoutX="77.0" layoutY="103.0" />
+                  <Label layoutX="176.0" layoutY="14.0" prefHeight="20.0" prefWidth="128.0" text="Registrar local">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="18.0" layoutY="51.0" text="Usuario" />
+                  <TextField layoutX="18.0" layoutY="68.0" />
+                  <Label layoutX="254.0" layoutY="47.0" text="Contraseña" />
+                  <TextField layoutX="254.0" layoutY="64.0" />
+                  <Label layoutX="254.0" layoutY="103.0" text="Repetir contraseña" />
+                  <TextField layoutX="254.0" layoutY="120.0" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="108.0" prefWidth="337.0">
+               <children>
+                  <Label layoutX="18.0" layoutY="35.0" text="Nombre" />
+                  <TextField layoutX="254.0" layoutY="52.0" />
+                  <Label layoutX="256.0" layoutY="35.0" text="Apellido" />
+                  <TextField layoutX="18.0" layoutY="52.0" />
+                  <Label layoutX="14.0" layoutY="193.0" text="Dirección" />
+                  <TextField layoutX="18.0" layoutY="107.0" />
+                  <Label layoutX="18.0" layoutY="86.0" text="Contacto" />
+                  <TextField layoutX="18.0" layoutY="218.0" prefHeight="25.0" prefWidth="430.0" />
+                  <Label layoutX="14.0" layoutY="140.0" text="Sexo" />
+                  <RadioButton layoutX="17.0" layoutY="163.0" mnemonicParsing="false" text="Masculino" />
+                  <RadioButton layoutX="105.0" layoutY="163.0" mnemonicParsing="false" text="Femenino" />
+                  <RadioButton layoutX="200.0" layoutY="163.0" mnemonicParsing="false" text="No binario" />
+                  <TextField layoutX="254.0" layoutY="103.0" />
+                  <Label layoutX="256.0" layoutY="86.0" text="CUIT" />
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="44.0" prefWidth="508.0">
+               <children>
+                  <Button layoutX="33.0" layoutY="14.0" mnemonicParsing="false" text="Cancelar" />
+                  <Button layoutX="410.0" layoutY="14.0" mnemonicParsing="false" text="Finalizar" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</VBox>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="710.0" prefWidth="970.0" style="-fx-background-color: #2d862d;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ar.edu.unsl.frontend.view_controllers.MainMenuViewCntlr">
+   <children>
+      <AnchorPane layoutX="10.0" layoutY="410.0" prefHeight="290.0" prefWidth="950.0" style="-fx-background-color: #f5f5f5; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 40, 0, 0, 0); -fx-background-radius: 5;">
+         <children>
+            <TextField fx:id="searchField" layoutX="5.0" layoutY="5.0" prefHeight="30.0" prefWidth="200.0" promptText="user data:" />
+            <Button layoutX="215.0" layoutY="5.0" mnemonicParsing="false" onAction="#openUserDataButtonPressed" prefHeight="32.0" prefWidth="131.0" style="-fx-border-color: gray;" styleClass="boton" stylesheets="@../styles/newfile.css" text="Open" textAlignment="CENTER" wrapText="true">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <TableView fx:id="users" layoutX="5.0" layoutY="40.0" onMouseClicked="#selectUser" prefHeight="245.0" prefWidth="940.0">
+              <columns>
+                <TableColumn fx:id="id" minWidth="60.0" prefWidth="60.0" text="Id" />
+                  <TableColumn fx:id="name" minWidth="100.0" prefWidth="150.0" text="Name" />
+                <TableColumn fx:id="userName" minWidth="100.0" prefWidth="150.0" text="User Name" />
+                  <TableColumn fx:id="email" minWidth="100.0" prefWidth="220.0" text="Email" />
+                  <TableColumn fx:id="phone" minWidth="100.0" prefWidth="170.0" text="phone" />
+                  <TableColumn fx:id="website" minWidth="100.0" prefWidth="188.0" text="Website" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="500.0" layoutY="200.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.0" prefWidth="450.0" style="-fx-background-color: #f5f5f5; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 40, 0, 0, 0); -fx-background-radius: 16;">
+         <children>
+            <Button contentDisplay="TOP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#searchUserButtonPressed" prefHeight="160.0" prefWidth="225.0" style="-fx-background-radius: 16;" styleClass="boton" stylesheets="@../styles/newfile.css" text="Search User" textAlignment="CENTER" wrapText="true">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="Verdana" size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="41.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/icons8_search_64px_1.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button contentDisplay="TOP" layoutX="225.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="160.0" prefWidth="225.0" style="-fx-background-radius: 16;" styleClass="boton" stylesheets="@../styles/newfile.css" text="Other functionality" textAlignment="CENTER" wrapText="true">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="Verdana" size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/csv-file.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <TextField fx:id="searchUser" layoutX="47.0" layoutY="14.0" prefHeight="19.0" prefWidth="131.0" promptText="user id" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="500.0" layoutY="20.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.0" prefWidth="450.0" style="-fx-background-color: #f5f5f5; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 40, 0, 0, 0); -fx-background-radius: 16;">
+         <children>
+            <Button contentDisplay="TOP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="160.0" prefWidth="225.0" style="-fx-background-radius: 16;" styleClass="boton" stylesheets="@../styles/newfile.css" text="New resource A" textAlignment="CENTER" wrapText="true">
+               <graphic>
+                  <ImageView fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/icons8_plus_magazine_dark100px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="Verdana" size="18.0" />
+               </font>
+            </Button>
+            <Button contentDisplay="TOP" layoutX="225.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#newUserButtonPressed" prefHeight="160.0" prefWidth="225.0" style="-fx-background-radius: 16;" styleClass="boton" stylesheets="@../styles/newfile.css" text="New user" textAlignment="CENTER" wrapText="true">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="Verdana" size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="58.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/icons8_add_user_48px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </AnchorPane>
+      <Label layoutX="10.0" layoutY="12.0" prefHeight="80.0" prefWidth="456.0" text="Client Example" textFill="WHITE">
+         <font>
+            <Font size="60.0" />
+         </font>
+      </Label>
+      <Separator layoutX="467.0" layoutY="14.0" orientation="VERTICAL" prefHeight="360.0" />
+   </children>
+</AnchorPane>
