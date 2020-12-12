@@ -18,7 +18,7 @@ public class Usuario {
 
     @Column(nullable = false)
     private String password;
-
+/*
 	public String getUserName() {
 		// TODO Auto-generated method stub
 		return userName;
@@ -33,6 +33,6 @@ public class Usuario {
 		// TODO Auto-generated method stub
 		password = encode;
 	}
-    
+*/
     
 }
