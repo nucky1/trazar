@@ -1,4 +1,4 @@
-package ar.edu.unsl.trazar;
+package ar.edu.unsl.trazar.config.swagger;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
