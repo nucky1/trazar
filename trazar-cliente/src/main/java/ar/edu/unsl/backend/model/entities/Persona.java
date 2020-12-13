@@ -7,8 +7,9 @@ public class Persona {
     private Integer id;
     private String nombre;
     private String apellido;
+    private String telefono;
+    private String direccion;
     private String numeroDocumento;
-    private String sexo;
 
     public Integer getId() {
         return id;
@@ -42,13 +43,23 @@ public class Persona {
         this.numeroDocumento = numeroDocumento;
     }
 
-    public String getSexo() {
-        return sexo;
+    public String getTelefono() {
+        return telefono;
     }
 
-    public void setSexo(String sexo) {
-        this.sexo = sexo;
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+
 
     
 }

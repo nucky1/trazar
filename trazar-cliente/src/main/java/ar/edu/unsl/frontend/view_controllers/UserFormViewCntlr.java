@@ -128,8 +128,14 @@ public class UserFormViewCntlr extends ViewCntlr implements UserServiceSubscribe
 
     }
 
+
     @Override
-    public void logueado(Usuario user) {
-        
+    public void logueado(String user) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void iniciarPantalla(Usuario body) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

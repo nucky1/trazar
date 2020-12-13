@@ -17,12 +17,13 @@ import ar.edu.unsl.backend.model.services.UserService;
 import ar.edu.unsl.backend.model.interfaces.IUserOperator;
 import ar.edu.unsl.backend.model.repositories.UserRepository;
 import ar.edu.unsl.frontend.service_subscribers.UserServiceSubscriber;
+import com.google.gson.JsonObject;
 
 public class UserOperatorRetrofit implements IUserOperator
 {
-    private final static int REQUEST_CONNECT_TIMEOUT_TOLERANCE = 20;
-    private final static int REQUEST_READ_TIMEOUT_TOLERANCE = 5;
-    private final static int REQUEST_WRITE_TIMEOUT_TOLERANCE = 5;
+    private final static int REQUEST_CONNECT_TIMEOUT_TOLERANCE = 60;
+    private final static int REQUEST_READ_TIMEOUT_TOLERANCE = 20;
+    private final static int REQUEST_WRITE_TIMEOUT_TOLERANCE = 20;
 
     public final static String ID = "id";
     public final static String RESOURCE = "/usuario";
@@ -47,7 +48,7 @@ public class UserOperatorRetrofit implements IUserOperator
 
         this.retrofit = new Retrofit.Builder().baseUrl(App.API_HOSTNAME).client(this.okHttpClient)
                 .addConverterFactory(GsonConverterFactory.create()).build();
-
+                
         this.userRepository = this.retrofit.create(UserRepository.class);
     }
 
@@ -171,22 +172,23 @@ public class UserOperatorRetrofit implements IUserOperator
 
     @Override
     public Usuario login(Usuario user) throws Exception {
-        this.userRepository.login(user).enqueue(new Callback<Usuario>() {
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("userName", user.getUserName());
+        jsonObject.addProperty("password", user.getPassword());
+        this.userRepository.login(jsonObject).enqueue(new Callback<Response<Void>>() {
             @Override
-            public void onResponse(Call<Usuario> call, Response<Usuario> rspns) {
-                if(rspns.isSuccessful())
+            public void onResponse(Call<Response<Void>> call, Response<Response<Void>> rspns) {
+                if(rspns.code()== 200)
                 {
                     Platform.runLater(new Runnable()
                     {
                         @Override
                         public void run()
                         {
-                            ((UserServiceSubscriber)userService.getServiceSubscriber()).logueado(rspns.body());
+                            ((UserServiceSubscriber)userService.getServiceSubscriber()).logueado(rspns.headers().get("Authorization"));
                         } 
                     });
-                }
-                else
-                {
+                }else{
                     Platform.runLater(new Runnable()
                     {
                         @Override
@@ -199,11 +201,59 @@ public class UserOperatorRetrofit implements IUserOperator
             }
 
             @Override
-            public void onFailure(Call<Usuario> call, Throwable thrwbl) {
-                userService.getServiceSubscriber().showError("login request fail", null, new Exception(thrwbl));
+            public void onFailure(Call<Response<Void>> call, Throwable thrwbl) {
+                Platform.runLater(new Runnable()
+                {
+                    @Override
+                    public void run()
+                    {
+                        userService.getServiceSubscriber().showError("login request fail", null, new Exception(thrwbl));
+                    } 
+                });
             }
         });
-      
         return null;
+    }
+
+    @Override
+    public void pedirDatos(Usuario user) {
+        
+        this.userRepository.pedirDatos(user.getUserName(),user.getToken()).enqueue(new Callback<Usuario>() {
+            @Override
+            public void onResponse(Call call, Response rspns) {
+                if(rspns.code()== 200)
+                {
+                    Platform.runLater(new Runnable()
+                    {
+                        @Override
+                        public void run()
+                        {
+                            ((UserServiceSubscriber)userService.getServiceSubscriber()).iniciarPantalla((Usuario) rspns.body());
+                        } 
+                    });
+                }else{
+                    Platform.runLater(new Runnable()
+                    {
+                        @Override
+                        public void run()
+                        {
+                            userService.getServiceSubscriber().showError("No trae la info del local", rspns.errorBody().toString(), new Exception("Error response"));
+                        } 
+                    });
+                }
+            }
+
+            @Override
+            public void onFailure(Call call, Throwable thrwbl) {
+                Platform.runLater(new Runnable()
+                {
+                    @Override
+                    public void run()
+                    {
+                        userService.getServiceSubscriber().showError("info request fail", null, new Exception(thrwbl));
+                    } 
+                });
+            }
+        });
     }
 }

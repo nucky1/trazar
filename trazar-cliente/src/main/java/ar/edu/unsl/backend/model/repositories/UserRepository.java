@@ -10,6 +10,10 @@ import retrofit2.http.Body;
 import ar.edu.unsl.backend.model.entities.User;
 import ar.edu.unsl.backend.model.entities.Usuario;
 import ar.edu.unsl.backend.model.persistence.UserOperatorRetrofit;
+import com.google.gson.JsonObject;
+import retrofit2.Response;
+import retrofit2.http.Header;
+import retrofit2.http.Query;
 
 public interface UserRepository
 {
@@ -23,5 +27,8 @@ public interface UserRepository
     Call<User> postUser(@Body User user);
     
     @POST("/login")
-    Call<Usuario> login(@Body Usuario user);
+    Call<Response<Void>> login(@Body JsonObject login);
+
+    @GET("/usuario?")
+    Call<Usuario> pedirDatos(@Query("userName") String username,@Header("Authorization") String auth);
 }

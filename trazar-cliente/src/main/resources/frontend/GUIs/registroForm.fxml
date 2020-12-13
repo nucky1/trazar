@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="516.0" prefWidth="293.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ar.edu.unsl.frontend.view_controllers.registroFormCntrl">
+   <children>
+      <Button fx:id="btnRegistrar" layoutX="118.0" layoutY="455.0" mnemonicParsing="false" onAction="#registrarVisita" text="Registrar" />
+      <Label layoutX="31.0" layoutY="24.0" prefHeight="17.0" prefWidth="107.0" text="Documento" />
+      <TextField fx:id="txtDocumento" layoutX="31.0" layoutY="52.0" prefHeight="25.0" prefWidth="174.0" />
+      <Label layoutX="33.0" layoutY="180.0" prefHeight="17.0" prefWidth="107.0" text="Apellido" />
+      <TextField fx:id="txtNombre" layoutX="31.0" layoutY="148.0" prefHeight="25.0" prefWidth="174.0" />
+      <Label layoutX="33.0" layoutY="303.0" prefHeight="17.0" prefWidth="107.0" text="Telefono" />
+      <TextField fx:id="txtApellido" layoutX="31.0" layoutY="207.0" prefHeight="25.0" prefWidth="174.0" />
+      <Label layoutX="31.0" layoutY="387.0" prefHeight="17.0" prefWidth="107.0" text="Fecha de ingreso:" />
+      <Label fx:id="lblFecha" layoutX="33.0" layoutY="411.0" prefHeight="17.0" prefWidth="107.0" text="15/10/2020" />
+      <Label layoutX="33.0" layoutY="241.0" prefHeight="17.0" prefWidth="107.0" text="Dirección" />
+      <TextField fx:id="txtDireccion" layoutX="31.0" layoutY="266.0" prefHeight="25.0" prefWidth="174.0" />
+      <Label layoutX="33.0" layoutY="123.0" prefHeight="17.0" prefWidth="107.0" text="Nombre" />
+      <TextField fx:id="txtTelefono" layoutX="31.0" layoutY="327.0" prefHeight="25.0" prefWidth="174.0" />
+      <Label fx:id="lblAlerta" layoutX="31.0" layoutY="77.0" opacity="0.0" prefHeight="17.0" prefWidth="122.0" text="La persona es nueva" textFill="#fc0000" />
+      <Button fx:id="btnBuscar" layoutX="216.0" layoutY="52.0" mnemonicParsing="false" onAction="#buscarPersona" text="Buscar" />
+   </children>
+</Pane>

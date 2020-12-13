@@ -12,7 +12,7 @@ import ar.edu.unsl.backend.model.persistence.PersonaOperatorRetrofit;
  *
  * @author demig
  */
-public class PersonaService {
+public class PersonaService extends Service {
     private IPersonaOperator operator;
     
     public PersonaService(){

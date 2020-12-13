@@ -15,6 +15,7 @@ import javafx.scene.control.Alert.AlertType;
 import ar.edu.unsl.backend.util.ExpressionChecker;
 import ar.edu.unsl.backend.model.services.Service;
 import ar.edu.unsl.frontend.service_subscribers.ServiceSubscriber;
+import javafx.scene.layout.VBox;
 
 public abstract class ViewCntlr implements Initializable, ServiceSubscriber
 {
@@ -70,6 +71,8 @@ public abstract class ViewCntlr implements Initializable, ServiceSubscriber
         try
         {
             fxmlLoader = new FXMLLoader(new URL(App.GUIs_LOCATION+fileName+App.FILE_EXTENSION));
+            VBox root = new VBox();
+            fxmlLoader.setRoot(root);
             scene = new Scene(fxmlLoader.load());
         }
         catch(Exception exception)
@@ -83,7 +86,7 @@ public abstract class ViewCntlr implements Initializable, ServiceSubscriber
         viewCtrller.getStage().setScene(scene);
         viewCtrller.getStage().setTitle(title);
         viewCtrller.setPrevViewCntlr(this);
-        
+        this.services.get(0).toString();
         for(Service service: services)
         {
             viewCtrller.addService(service);
@@ -136,6 +139,8 @@ public abstract class ViewCntlr implements Initializable, ServiceSubscriber
     @Override
     public int addService(Service service)
     {
+        if(this.services == null)
+            this.services = new ArrayList<>();
         this.services.add(service);
         return this.services.size()-1;
     }
