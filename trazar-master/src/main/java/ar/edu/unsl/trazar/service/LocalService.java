@@ -9,4 +9,5 @@ public interface LocalService {
     Local createLocal(Local local);
     Local getLocalById(Integer id);
     List<Local> getLocales();
+    Local updateLocal(Integer id,Local local);
 }

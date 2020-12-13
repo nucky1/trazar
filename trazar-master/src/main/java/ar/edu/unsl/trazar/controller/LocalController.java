@@ -29,4 +29,9 @@ public class LocalController {
         return localService.getLocales();
     }
 
+    @PutMapping("/{id}")
+    public Local updateLocal(@PathVariable Integer id,@RequestBody Local local){
+        return localService.updateLocal(id,local);
+    }
+
 }

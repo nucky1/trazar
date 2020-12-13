@@ -27,4 +27,17 @@ public class LocalServiceImpl implements LocalService {
     public List<Local> getLocales() {
         return localRepository.findAll();
     }
+
+    @Override
+    public Local updateLocal(Integer id, Local local) {
+        Local localAnt = localRepository.findById(id).orElse(null);
+        if (localAnt==null){
+            return null;
+        }
+        else {
+            local.setId(id);
+            return localRepository.save(local);
+        }
+    }
+
 }
