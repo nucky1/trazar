@@ -121,6 +121,6 @@ public class CustomAlert extends Alert
     public void customClose()
     {
         this.setResult(ButtonType.CLOSE);
-        this.close();;
+        this.close();
     }
 }

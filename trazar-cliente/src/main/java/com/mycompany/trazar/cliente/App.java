@@ -16,17 +16,16 @@ import ar.edu.unsl.backend.util.CustomAlert;
 import ar.edu.unsl.backend.model.services.Service;
 import ar.edu.unsl.backend.util.ExpressionChecker;
 import ar.edu.unsl.backend.model.services.UserService;
+import ar.edu.unsl.frontend.view_controllers.LoginCntrl;
 import ar.edu.unsl.frontend.view_controllers.ViewCntlr;
 import ar.edu.unsl.frontend.view_controllers.MainMenuViewCntlr;
 import java.net.MalformedURLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class App extends Application
 {
     public static final String GUIs_LOCATION = App.class.getResource("")+ "../../../../frontend/GUIs/";
     public static final String FILE_EXTENSION = ".fxml";
-    public static final String API_HOSTNAME = "http://jsonplaceholder.typicode.com";
+    public static final String API_HOSTNAME = "http://localhost:8080";
 
     @Override
     public void start(final Stage stage) throws MalformedURLException, IOException
@@ -35,7 +34,7 @@ public class App extends Application
             FXMLLoader fxmlLoader = new FXMLLoader(new URL(GUIs_LOCATION + fileName + FILE_EXTENSION));
             Scene scene = new Scene(fxmlLoader.load());
             stage.setScene(scene);
-            stage.setTitle("Main Menu");
+            stage.setTitle("Login");
             //stage.initStyle(StageStyle.UNDECORATED);
             ViewCntlr viewCtrller = fxmlLoader.getController();
             
@@ -62,8 +61,7 @@ public class App extends Application
             userService.setExpressionChecker(ExpressionChecker.getExpressionChecker());
             
             stage.show();
-            
-            ((MainMenuViewCntlr)viewCtrller).init();
+            ((LoginCntrl)viewCtrller).init(stage);
     }
 
     public static void main( String[] args )
@@ -71,9 +69,10 @@ public class App extends Application
         try{
         System.out.println(GUIs_LOCATION);
             
-        }catch(Exception e){
-            
-        }
+        
         launch();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 }

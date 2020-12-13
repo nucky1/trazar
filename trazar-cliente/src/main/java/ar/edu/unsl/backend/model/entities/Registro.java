@@ -11,14 +11,6 @@ public class Registro {
     private Local local;
     private Date fecha;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     public Persona getPersona() {
         return persona;
     }
@@ -34,6 +26,16 @@ public class Registro {
     public void setLocal(Local local) {
         this.local = local;
     }
+
+    
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+    
 
     public Date getFecha() {
         return fecha;

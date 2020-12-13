@@ -10,6 +10,8 @@ public interface UserServiceSubscriber
 
     void showUsers(List<User> users);
 
-    public void logueado(Usuario user);
+    public void logueado(String user);
+
+    public void iniciarPantalla(Usuario body);
 
 }

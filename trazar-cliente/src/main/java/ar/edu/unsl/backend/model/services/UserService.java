@@ -7,6 +7,8 @@ import ar.edu.unsl.backend.model.entities.Usuario;
 import ar.edu.unsl.backend.model.interfaces.IUserOperator;
 import ar.edu.unsl.backend.model.persistence.UserOperatorRetrofit;
 import ar.edu.unsl.frontend.service_subscribers.UserServiceSubscriber;
+import com.sun.jndi.dns.DnsContextFactory;
+import com.sun.media.jfxmediaimpl.platform.Platform;
 import javafx.concurrent.Task;
 
 public class UserService extends Service
@@ -127,24 +129,43 @@ public class UserService extends Service
         }
 	}
 
-    public void login(String username, String pass) {
+    public void login(String username, String pass) throws Exception {
         CustomAlert customAlert = this.getServiceSubscriber().showProcessIsWorking("Wait a moment while the process is done.");
-        Task<String> t;
+        
         Usuario user = new Usuario();
         user.setPassword(pass);
         user.setUserName(username);
-        t = new Task<String>() { 
+        Task<Void> t = new Task<Void>() {
             @Override
-            protected String call() throws Exception {
+            protected Void call() throws Exception {
                 Usuario usuario = operator.login(user);
                 getServiceSubscriber().closeProcessIsWorking(customAlert);
-                if(usuario != null){
-                    ((UserServiceSubscriber)getServiceSubscriber()).logueado(usuario);
-                }else{
-                    getServiceSubscriber().showError("Usuario y/o contraseña incorrecto.");
-                }
                 return null;
             }
         };
+        javafx.application.Platform.runLater(t);
+        /*
+        Usuario usuario = operator.login(user);
+        getServiceSubscriber().closeProcessIsWorking(customAlert);
+        if(usuario != null){
+            ((UserServiceSubscriber)getServiceSubscriber()).logueado(usuario);
+        }else{
+            ((UserServiceSubscriber)getServiceSubscriber()).logueado(usuario);
+            getServiceSubscriber().showError("Usuario y/o contraseña incorrecto.");
+        }*/
+    }
+
+    public void pedirDatos(String username, String token) {
+        Usuario user = new Usuario();
+        user.setUserName(username);
+        user.setToken(token);
+        Task<Void> t = new Task<Void>() {
+            @Override
+            protected Void call() throws Exception {
+                operator.pedirDatos(user);
+                return null;
+            }
+        };
+        javafx.application.Platform.runLater(t);
     }
 }
