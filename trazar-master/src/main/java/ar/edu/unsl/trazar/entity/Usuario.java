@@ -1,6 +1,8 @@
 package ar.edu.unsl.trazar.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
@@ -16,6 +18,7 @@ public class Usuario {
     @Column(nullable = false)
     private String password;
 
+    @JsonIgnoreProperties({"usuario"})
     @OneToOne
     @JoinColumn(name = "local_id")
     private Local local;

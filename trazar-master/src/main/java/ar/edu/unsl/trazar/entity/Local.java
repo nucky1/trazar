@@ -1,6 +1,6 @@
 package ar.edu.unsl.trazar.entity;
 
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 
@@ -17,6 +17,7 @@ public class Local {
     @Column(length = 100)
     private String direccion;
 
+    @JsonIgnoreProperties({"local"})
     @OneToOne(mappedBy = "local")
     private Usuario usuario;
 
