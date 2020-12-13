@@ -1,12 +1,9 @@
 package ar.edu.unsl.trazar.entity;
 
 
-import lombok.Data;
-
 import javax.persistence.*;
 
 @Entity
-@Data
 public class Usuario {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
