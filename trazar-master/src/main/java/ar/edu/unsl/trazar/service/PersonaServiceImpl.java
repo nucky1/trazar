@@ -21,6 +21,8 @@ public class PersonaServiceImpl implements PersonaService {
     public Persona getPersonaById(Integer id) {
         return personaRepository.findById(id).orElse(null);
     }
+
+
     @Override
 	public Persona updatePersona(Integer id, Persona persona) {
 		if(personaRepository.findById(id).orElse(null) != null) {
@@ -29,4 +31,9 @@ public class PersonaServiceImpl implements PersonaService {
 			return null;
 		}
 	}
+
+    @Override
+    public Persona getPersonaByDni(String dni) {
+        return personaRepository.findByDni(dni);
+    }
 }

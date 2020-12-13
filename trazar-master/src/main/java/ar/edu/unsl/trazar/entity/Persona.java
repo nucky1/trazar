@@ -15,8 +15,8 @@ public class Persona {
     private String nombre;
     @Column(length = 100)
     private String apellido;
-    @Column(length = 100)
-    private String numeroDocumento;
+    @Column(length = 100,unique = true)
+    private String dni;
     @Column(length = 100)
     private String telefono;
     @Column(length = 100)
@@ -46,12 +46,12 @@ public class Persona {
         this.apellido = apellido;
     }
 
-    public String getNumeroDocumento() {
-        return numeroDocumento;
+    public String getDni() {
+        return dni;
     }
 
-    public void setNumeroDocumento(String numeroDocumento) {
-        this.numeroDocumento = numeroDocumento;
+    public void setDni(String dni) {
+        this.dni = dni;
     }
 
     public String getTelefono() {

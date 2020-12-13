@@ -25,7 +25,11 @@ public class PersonaController {
     
   	@RequestMapping(value = "/{personaId}", method = RequestMethod.PUT)
   	public Persona updatePersona(@PathVariable("personaId") Integer personaId, @RequestBody Persona persona) {
-  		
   		return personaService.updatePersona(personaId, persona);
   	}
+
+  	@GetMapping
+    public Persona getPersonaByDni(@RequestParam String dni){
+        return personaService.getPersonaByDni(dni);
+    }
 }
