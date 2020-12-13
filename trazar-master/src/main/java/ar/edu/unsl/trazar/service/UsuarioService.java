@@ -9,4 +9,5 @@ public interface UsuarioService {
     Usuario create(Usuario usuario);
 
     List<Usuario> getUsuarios();
+    Usuario find(String userName);
 }

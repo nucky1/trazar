@@ -5,6 +5,10 @@ import lombok.Data;
 
 import javax.persistence.*;
 
+/**
+ * @author demig
+ *
+ */
 @Entity
 @Data
 public class Usuario {
@@ -18,7 +22,10 @@ public class Usuario {
 
     @Column(nullable = false)
     private String password;
-/*
+    
+    public int getId() {
+    	return id;
+    }
 	public String getUserName() {
 		// TODO Auto-generated method stub
 		return userName;
@@ -33,6 +40,22 @@ public class Usuario {
 		// TODO Auto-generated method stub
 		password = encode;
 	}
-*/
+	@OneToOne
+    @JoinColumn(name = "local_id")
+    private Local local;
+
+	public int getLocal() {
+		return local.getId();
+	}
+	public void setLocal(Local local) {
+		this.local = local;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	
     
 }

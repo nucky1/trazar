@@ -18,7 +18,7 @@ public class SwaggerConfig {
                         .select()
                         .apis(
                                 RequestHandlerSelectors
-                                .basePackage("ar.edu.unsl"))
+                                .basePackage("ar.edu.unsl.trazar.controller"))
                         .paths(PathSelectors.any())
                         .build();
     }

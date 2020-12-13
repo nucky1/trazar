@@ -25,7 +25,6 @@ import java.util.Date;
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
     private AuthenticationManager authenticationManager;
-
     public JWTAuthenticationFilter(AuthenticationManager authenticationManager) {
         this.authenticationManager = authenticationManager;
     }
@@ -58,6 +57,9 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                           .setExpiration(expirationTime)
                           .signWith(SignatureAlgorithm.HS512,SIGNATURE_KEY).compact();
         response.addHeader(HEADER_AUTHORIZACION_KEY,TOKEN_BEARER_PREFIX+" "+token);
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        response.getWriter().write("{}");
 
     }
 }

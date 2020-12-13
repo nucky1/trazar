@@ -19,8 +19,13 @@ public class UsuarioController {
         return usuarioService.create(usuario);
     }
 
-    @GetMapping
+    @GetMapping("/todos")
     public List<Usuario> getUsuarios(){
         return usuarioService.getUsuarios();
+    }
+    
+    @GetMapping
+    public Usuario getUsuario(@RequestParam(required = false) String userName){
+        return usuarioService.find(userName);
     }
 }

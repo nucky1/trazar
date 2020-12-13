@@ -40,6 +40,9 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
             .and().cors() //activo configuracion de CORS con valores por defecto
             .and().csrf().disable() //desactivo filtro csrf
             .authorizeRequests().antMatchers(HttpMethod.POST,LOGIN_URL).permitAll()
+            .antMatchers(HttpMethod.GET,"/v2/api-docs").permitAll()
+            .antMatchers(HttpMethod.GET,"/swagger-ui.html").permitAll()
+            .antMatchers(HttpMethod.GET,"/swagger-ui").permitAll()
             .antMatchers(HttpMethod.POST,USER).permitAll()
             .anyRequest().authenticated()
             .and()

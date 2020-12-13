@@ -22,6 +22,6 @@ public class Persona {
     private String nombre;
     private String apellido;
     private String numeroDocumento;
-    private String sexo;
-
+    private String telefono;
+    private String direccion;
 }
