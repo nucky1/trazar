@@ -20,10 +20,12 @@ import retrofit2.http.Path;
  */
 public interface LocalRepository {
 
-    @POST("/registro/local/{id}")
-    Call<Local> createRegistro(@Path Integer id,
-                               @Body Registro registro,
+    @GET("/registro/local/{id}")
+    Call<List<Registro>> getRegistros(@Path Integer id,
                                @Query("fechaDesde") Date fechaDesde,
                                @Query("fechaHasta") Date fechaHasta,
                                @Header("Authorization") String auth);
+
+    @POST("/registro")
+    Call<Resgistro> createRegistro(@Body Registro registro,@Header("Authorization") String auth);
 }
