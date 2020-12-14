@@ -20,6 +20,10 @@ import retrofit2.http.Path;
  */
 public interface LocalRepository {
 
-    @PUT("/local/{id}")
-    Call<Local> updateLocal(@Path Integer id,@Body Local local,@Header("Authorization") String auth);
+    @POST("/registro/local/{id}")
+    Call<Local> createRegistro(@Path Integer id,
+                               @Body Registro registro,
+                               @Query("fechaDesde") Date fechaDesde,
+                               @Query("fechaHasta") Date fechaHasta,
+                               @Header("Authorization") String auth);
 }

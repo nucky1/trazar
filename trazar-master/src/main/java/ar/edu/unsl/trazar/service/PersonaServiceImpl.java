@@ -13,7 +13,6 @@ public class PersonaServiceImpl implements PersonaService {
     private PersonaRepository personaRepository;
 
 
-
     @Override
     public Persona createPersona(Persona persona) {
         return personaRepository.save(persona);

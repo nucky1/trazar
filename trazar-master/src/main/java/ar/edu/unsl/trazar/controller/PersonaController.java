@@ -29,7 +29,7 @@ public class PersonaController {
   	}
 
   	@GetMapping
-    public Persona getPersonaByDni(@RequestParam String dni){
+    public Persona getPersonaByDni(@RequestParam(name = "dni") String dni){
         return personaService.getPersonaByDni(dni);
     }
 }

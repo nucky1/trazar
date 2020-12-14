@@ -10,5 +10,10 @@ package ar.edu.unsl.backend.model.repositories;
  * @author demig
  */
 public interface PersonaRepository {
-    
+
+    @POST("/persona")
+    Call<Persona> createPersona(@Body Persona persona,@Header("Authorization") String auth);
+
+    @GET("/persona?")
+    Call<Persona> getPersonaByDni(@Query("dni") String dni,@Header("Authorization") String auth);
 }

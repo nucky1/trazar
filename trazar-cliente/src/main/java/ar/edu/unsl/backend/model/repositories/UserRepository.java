@@ -17,14 +17,6 @@ import retrofit2.http.Query;
 
 public interface UserRepository
 {
-    @GET(UserOperatorRetrofit.RESOURCE)
-    Call<List<User>> findAll();
-
-    @GET(UserOperatorRetrofit.SINGLE_RESOURCE)
-    Call<User> find(@Path(UserOperatorRetrofit.ID) Integer id);
-
-    @POST(UserOperatorRetrofit.RESOURCE)
-    Call<User> postUser(@Body User user);
     
     @POST("/login")
     Call<Response<Void>> login(@Body JsonObject login);
