@@ -5,27 +5,29 @@
  */
 package ar.edu.unsl.backend.model.repositories;
 
-import ar.edu.unsl.backend.model.entities.Local;
-import ar.edu.unsl.backend.model.persistence.UserOperatorRetrofit;
+import ar.edu.unsl.backend.model.entities.Persona;
+import ar.edu.unsl.backend.model.entities.Registro;
 import java.util.List;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 /**
  *
  * @author demig
  */
-public interface LocalRepository {
+public interface RegistroRepository {
 
     @GET("/registro/local/{id}")
-    Call<List<Registro>> getRegistros(@Path Integer id,
-                               @Query("fechaDesde") Date fechaDesde,
-                               @Query("fechaHasta") Date fechaHasta,
+    Call<List<Persona>> getRegistros(@Path("id") Integer id,
+                               @Query("fechaDesde") String fechaDesde,
+                               @Query("fechaHasta") String fechaHasta,
                                @Header("Authorization") String auth);
 
     @POST("/registro")
-    Call<Resgistro> createRegistro(@Body Registro registro,@Header("Authorization") String auth);
+    Call<Registro> createRegistro(@Body Registro registro,@Header("Authorization") String auth);
 }

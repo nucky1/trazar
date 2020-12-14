@@ -62,7 +62,8 @@ public abstract class ViewCntlr implements Initializable, ServiceSubscriber
      * that execute automatically.
      */
     protected abstract void manualInitialize();
-
+    
+    private VBox root = new VBox();
     protected ViewCntlr createStage(String title, String sceneName, Service ... services)
     {
         String fileName = sceneName;
@@ -71,7 +72,6 @@ public abstract class ViewCntlr implements Initializable, ServiceSubscriber
         try
         {
             fxmlLoader = new FXMLLoader(new URL(App.GUIs_LOCATION+fileName+App.FILE_EXTENSION));
-            VBox root = new VBox();
             fxmlLoader.setRoot(root);
             scene = new Scene(fxmlLoader.load());
         }

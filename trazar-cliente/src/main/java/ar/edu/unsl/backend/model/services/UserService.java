@@ -6,9 +6,6 @@ import ar.edu.unsl.backend.model.entities.User;
 import ar.edu.unsl.backend.model.entities.Usuario;
 import ar.edu.unsl.backend.model.interfaces.IUserOperator;
 import ar.edu.unsl.backend.model.persistence.UserOperatorRetrofit;
-import ar.edu.unsl.frontend.service_subscribers.UserServiceSubscriber;
-import com.sun.jndi.dns.DnsContextFactory;
-import com.sun.media.jfxmediaimpl.platform.Platform;
 import javafx.concurrent.Task;
 
 public class UserService extends Service

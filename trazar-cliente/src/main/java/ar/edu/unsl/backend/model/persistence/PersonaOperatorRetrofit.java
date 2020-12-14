@@ -5,6 +5,7 @@
  */
 package ar.edu.unsl.backend.model.persistence;
 
+import ar.edu.unsl.backend.model.entities.Persona;
 import com.mycompany.trazar.cliente.App;
 import retrofit2.Retrofit;
 import okhttp3.OkHttpClient;
@@ -13,6 +14,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import ar.edu.unsl.backend.model.services.PersonaService;
 import ar.edu.unsl.backend.model.interfaces.IPersonaOperator;
 import ar.edu.unsl.backend.model.repositories.PersonaRepository;
+import ar.edu.unsl.backend.util.Statics;
+import ar.edu.unsl.frontend.service_subscribers.PersonaServiceSubscriber;
+import javafx.application.Platform;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 /**
  *
  * @author demig
@@ -29,7 +36,7 @@ public class PersonaOperatorRetrofit implements IPersonaOperator{
     static UserOperatorRetrofit operator;
 
     private PersonaService personaService;
-    private PersonaRepository userRepository;
+    private PersonaRepository personaRepository;
     private OkHttpClient okHttpClient;
     private Retrofit retrofit;
 
@@ -46,7 +53,89 @@ public class PersonaOperatorRetrofit implements IPersonaOperator{
         this.retrofit = new Retrofit.Builder().baseUrl(App.API_HOSTNAME).client(this.okHttpClient)
                 .addConverterFactory(GsonConverterFactory.create()).build();
 
-        this.userRepository = this.retrofit.create(PersonaRepository.class);
+        this.personaRepository = this.retrofit.create(PersonaRepository.class);
+    }
+
+    @Override
+    public void findPersona(String dni) {
+        this.personaRepository.getPersonaByDni(dni, Statics.getUser().getToken()).enqueue(new Callback<Persona>() {
+            @Override
+            public void onResponse(Call<Persona> call, Response<Persona> rspns) {
+                if(rspns.code()== 200)
+                {
+                    Platform.runLater(new Runnable()
+                    {
+                        @Override
+                        public void run()
+                        {
+                            ((PersonaServiceSubscriber)personaService.getServiceSubscriber()).showPersona(rspns.body());
+                        } 
+                    });
+                }else{
+                    Platform.runLater(new Runnable()
+                    {
+                        @Override
+                        public void run()
+                        {
+                            ((PersonaServiceSubscriber)personaService.getServiceSubscriber()).didntFind();
+                        } 
+                    });
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Persona> call, Throwable thrwbl) {
+                Platform.runLater(new Runnable()
+                    {
+                        @Override
+                        public void run()
+                        {
+                            personaService.getServiceSubscriber().showError("get visitas fail", null, new Exception(thrwbl));
+                        }  
+                    });
+            }
+        });
+    }
+
+    @Override
+    public void save(Persona p) {
+        this.personaRepository.createPersona(p, Statics.getUser().getToken()).enqueue(new Callback<Persona>() {
+            @Override
+            public void onResponse(Call<Persona> call, Response<Persona> rspns) {
+                if(rspns.code()== 200)
+                {
+                    Platform.runLater(new Runnable()
+                    {
+                        @Override
+                        public void run()
+                        {
+                            ((PersonaServiceSubscriber)personaService.getServiceSubscriber()).GuardarVisita(rspns.body());
+                        } 
+                    });
+                }else{
+                    Platform.runLater(new Runnable()
+                    {
+                        @Override
+                        public void run()
+                        {
+                            personaService.getServiceSubscriber().showError("Save persona fail");
+                        } 
+                    });
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Persona> call, Throwable thrwbl) {
+               Platform.runLater(new Runnable()
+                    {
+                        @Override
+                        public void run()
+                        {
+                            personaService.getServiceSubscriber().showError("get visitas fail", null, new Exception(thrwbl));
+                        }  
+                    });
+            }
+        });
     }
        
 }

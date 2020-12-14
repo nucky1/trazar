@@ -5,9 +5,7 @@
  */
 package ar.edu.unsl.frontend.view_controllers;
 
-import ar.edu.unsl.backend.model.entities.Local;
 import ar.edu.unsl.backend.model.entities.Persona;
-import ar.edu.unsl.backend.model.entities.User;
 import ar.edu.unsl.backend.model.services.LocalService;
 import ar.edu.unsl.backend.model.services.PersonaService;
 import ar.edu.unsl.backend.model.services.RegistroService;

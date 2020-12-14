@@ -6,6 +6,7 @@
 package ar.edu.unsl.frontend.service_subscribers;
 
 import ar.edu.unsl.backend.model.entities.Persona;
+import ar.edu.unsl.backend.model.entities.Registro;
 import java.util.List;
 
 /**
@@ -14,6 +15,10 @@ import java.util.List;
  */
 public interface PersonaServiceSubscriber {
     void showPersona(Persona persona);
+    void didntFind();
+    void GuardarVisita(Persona persona);
 
-    void showPersonas(List<Persona> personas);
+    public void showExito(Registro body);
+
+    public void error();
 }

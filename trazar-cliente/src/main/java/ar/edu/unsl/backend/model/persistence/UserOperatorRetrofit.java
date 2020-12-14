@@ -57,14 +57,6 @@ public class UserOperatorRetrofit implements IUserOperator
     {
         User ret = null;
         Response<User> response = null;
-        try
-        {
-            response = this.userRepository.postUser(user).execute();
-        }
-        catch (IOException exception)
-        {
-            exception.printStackTrace();
-        }
 
         if(response != null && response.isSuccessful())
         {
@@ -91,7 +83,7 @@ public class UserOperatorRetrofit implements IUserOperator
         // TODO Auto-generated method stub
         return null;
     }
-
+/*
     @Override
     public List<User> findAll() throws Exception
     {
@@ -161,7 +153,7 @@ public class UserOperatorRetrofit implements IUserOperator
             };
         });
         return null;
-    }
+    }*/
 
     @Override
     public User delete(Integer id) throws Exception
@@ -255,5 +247,15 @@ public class UserOperatorRetrofit implements IUserOperator
                 });
             }
         });
+    }
+
+    @Override
+    public User find(Integer id) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<User> findAll() throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

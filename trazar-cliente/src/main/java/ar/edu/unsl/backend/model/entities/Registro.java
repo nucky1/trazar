@@ -9,8 +9,9 @@ public class Registro {
     private Integer id;
     private Persona persona;
     private Local local;
-    private Date fecha;
+    private String fecha;
 
+    
     public Persona getPersona() {
         return persona;
     }
@@ -37,16 +38,12 @@ public class Registro {
     }
     
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
-    
-    
-    public void prePersist(){
-        fecha= new Date();
-    }
+
 }

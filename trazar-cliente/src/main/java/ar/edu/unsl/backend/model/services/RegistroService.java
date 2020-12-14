@@ -5,7 +5,10 @@
  */
 package ar.edu.unsl.backend.model.services;
 
-import ar.edu.unsl.backend.model.entities.Usuario;
+import ar.edu.unsl.backend.model.entities.Registro;
+import ar.edu.unsl.backend.model.interfaces.IRegistroOperator;
+import ar.edu.unsl.backend.model.persistence.RegistroOperatorRetrofit;
+import ar.edu.unsl.backend.util.Statics;
 import java.time.LocalDate;
 import javafx.concurrent.Task;
 
@@ -22,11 +25,23 @@ public class RegistroService extends Service{
         //this.operator = new UserOperatorApache(this);
     }
     public void buscarEntreFechas(LocalDate value, LocalDate value0) {
+        String fechain = Statics.dateFormat(value);
+        String fechaOut = Statics.dateFormat(value0);
         Task<Void> t = new Task<Void>() {
             @Override
             protected Void call() throws Exception {
-                Usuario usuario = operator.login(user);
-                getServiceSubscriber().closeProcessIsWorking(customAlert);
+                operator.consultarVisitas(fechain, fechaOut);
+                return null;
+            }
+        };
+        javafx.application.Platform.runLater(t);
+    }
+
+    public void insertarRegistro(Registro r) {
+        Task<Void> t = new Task<Void>() {
+            @Override
+            protected Void call() throws Exception {
+                operator.insertarRegistro(r);
                 return null;
             }
         };

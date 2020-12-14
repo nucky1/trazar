@@ -6,6 +6,12 @@
 package ar.edu.unsl.backend.util;
 
 import ar.edu.unsl.backend.model.entities.Usuario;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+import java.util.Locale;
 
 /**
  *
@@ -13,7 +19,15 @@ import ar.edu.unsl.backend.model.entities.Usuario;
  */
 public class Statics {
     private static Usuario user = null;
-
+    static SimpleDateFormat plantilla = new SimpleDateFormat("yyyy-MM-dd");
+    
+    public static String dateFormat(LocalDate date){
+        return date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        //Locale locale = new Locale("us", "US");
+        
+        //DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.DEFAULT, locale);
+        //return plantilla.format(date);
+    }
     public static Usuario getUser() {
         return user;
     }

@@ -5,7 +5,6 @@
  */
 package ar.edu.unsl.frontend.view_controllers;
 
-import ar.edu.unsl.backend.model.entities.User;
 import ar.edu.unsl.backend.model.entities.Usuario;
 import ar.edu.unsl.backend.model.services.PersonaService;
 import ar.edu.unsl.backend.model.services.RegistroService;
@@ -13,7 +12,6 @@ import ar.edu.unsl.backend.model.services.UserService;
 import ar.edu.unsl.backend.util.Statics;
 import ar.edu.unsl.frontend.service_subscribers.UserServiceSubscriber;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

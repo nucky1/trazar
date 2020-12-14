@@ -6,12 +6,10 @@
 package ar.edu.unsl.backend.model.repositories;
 
 import ar.edu.unsl.backend.model.entities.Local;
-import ar.edu.unsl.backend.model.persistence.UserOperatorRetrofit;
-import java.util.List;
 import retrofit2.Call;
 import retrofit2.http.Body;
-import retrofit2.http.GET;
-import retrofit2.http.POST;
+import retrofit2.http.Header;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 /**
@@ -21,5 +19,5 @@ import retrofit2.http.Path;
 public interface LocalRepository {
 
     @PUT("/local/{id}")
-    Call<Local> updateLocal(@Path Integer id,@Body Local local,@Header("Authorization") String auth);
+    Call<Local> updateLocal(@Path("id") Integer id,@Body Local local,@Header("Authorization") String auth);
 }

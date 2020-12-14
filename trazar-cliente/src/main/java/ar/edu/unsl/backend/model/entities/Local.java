@@ -6,7 +6,8 @@ public class Local {
     private String nombre;
     private String telefono;
     private String direccion;
-
+    private Usuario usuario;
+    
     public Integer getId() {
         return id;
     }
