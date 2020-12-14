@@ -5,22 +5,14 @@
  */
 package ar.edu.unsl.backend.model.persistence;
 
-import java.util.List;
-import retrofit2.Call;
 import com.mycompany.trazar.cliente.App;
-import retrofit2.Callback;
-import retrofit2.Response;
 import retrofit2.Retrofit;
-import java.io.IOException;
 import okhttp3.OkHttpClient;
-import javafx.application.Platform;
 import java.util.concurrent.TimeUnit;
-import ar.edu.unsl.backend.model.entities.Persona;
 import retrofit2.converter.gson.GsonConverterFactory;
 import ar.edu.unsl.backend.model.services.PersonaService;
 import ar.edu.unsl.backend.model.interfaces.IPersonaOperator;
 import ar.edu.unsl.backend.model.repositories.PersonaRepository;
-import ar.edu.unsl.frontend.service_subscribers.PersonaServiceSubscriber;
 /**
  *
  * @author demig

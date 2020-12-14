@@ -113,20 +113,7 @@ public class UserFormViewCntlr extends ViewCntlr implements UserServiceSubscribe
 
     // ================================= service subscriber methods ==================================
 
-    @Override
-    public void showUser(User user)
-    {
-        new CustomAlert(AlertType.INFORMATION, "User registered", "User info:\n\n"+
-        "id: "+user.getId()+"\nname: "+user.getName()+"\nuser name: "+user.getUserName()+"\ne-mail: "+user.getEmail()+
-        "\nphone: "+user.getPhone()+"\nwebsite: "+user.getWebsite()).customShow();
-    }
-
-    @Override
-    public void showUsers(List<User> users)
-    {
-        // TODO Auto-generated method stub
-
-    }
+    
 
 
     @Override

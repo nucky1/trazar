@@ -5,7 +5,7 @@
  */
 package ar.edu.unsl.frontend.service_subscribers;
 
-import ar.edu.unsl.backend.model.entities.Local;
+import ar.edu.unsl.backend.model.entities.Persona;
 import java.util.List;
 
 /**
@@ -13,7 +13,5 @@ import java.util.List;
  * @author demig
  */
 public interface LocalServiceSubscriber {
-        void showLocal(Local local);
-
-    void showLocales(List<Local> Locales);
+    void showVisitas (List<Persona> lista);
 }

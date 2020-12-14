@@ -44,7 +44,7 @@ public class MainMenuViewCntlr extends TableViewCntlr implements UserServiceSubs
     {
         if(this.users.getSelectionModel().getSelectedIndex() > -1)
         {
-            this.showUser(this.users.getSelectionModel().getSelectedItem());
+            //this.showUser(this.users.getSelectionModel().getSelectedItem());
         }
     }
 
@@ -156,7 +156,7 @@ public class MainMenuViewCntlr extends TableViewCntlr implements UserServiceSubs
             });
         });
     }
-
+/*
     @Override
     public void showUser(User user)
     {
@@ -168,14 +168,15 @@ public class MainMenuViewCntlr extends TableViewCntlr implements UserServiceSubs
     @Override
     public void showUsers(List<User> users)
     {
-        this.loadData(this.USERS_TABLE_NUMBER, users);
+        
     }
-
+*/
     // ================================= service subscriber methods =================================
 
 
     @Override
     public void logueado(String user) {
+        this.loadData(this.USERS_TABLE_NUMBER, users);
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

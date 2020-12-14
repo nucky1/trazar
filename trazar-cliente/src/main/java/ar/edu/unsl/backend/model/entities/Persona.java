@@ -9,7 +9,7 @@ public class Persona {
     private String apellido;
     private String telefono;
     private String direccion;
-    private String numeroDocumento;
+    private String dni;
 
     public Integer getId() {
         return id;
@@ -36,11 +36,11 @@ public class Persona {
     }
 
     public String getNumeroDocumento() {
-        return numeroDocumento;
+        return dni;
     }
 
     public void setNumeroDocumento(String numeroDocumento) {
-        this.numeroDocumento = numeroDocumento;
+        this.dni = numeroDocumento;
     }
 
     public String getTelefono() {

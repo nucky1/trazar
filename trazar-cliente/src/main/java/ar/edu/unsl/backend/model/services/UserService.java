@@ -70,7 +70,7 @@ public class UserService extends Service
         List<User> users = this.operator.findAll();
         if(users != null)
         {
-            ((UserServiceSubscriber)this.getServiceSubscriber()).showUsers(users);
+            //((UserServiceSubscriber)this.getServiceSubscriber()).showUsers(users);
         }
     }
     
@@ -84,7 +84,7 @@ public class UserService extends Service
             
             if(user != null)
             {
-                ((UserServiceSubscriber)this.getServiceSubscriber()).showUser(user);
+                //((UserServiceSubscriber)this.getServiceSubscriber()).showUser(user);
             }
             
         }

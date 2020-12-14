@@ -104,7 +104,7 @@ public class UserOperatorRetrofit implements IUserOperator
                 {
                     if(response.isSuccessful())
                     {
-                        ((UserServiceSubscriber)userService.getServiceSubscriber()).showUsers(response.body());
+                       // ((UserServiceSubscriber)userService.getServiceSubscriber()).showUsers(response.body());
                     }
                         else
                     {
@@ -137,7 +137,7 @@ public class UserOperatorRetrofit implements IUserOperator
                         @Override
                         public void run()
                         {
-                            ((UserServiceSubscriber)userService.getServiceSubscriber()).showUser(response.body());
+                            //((UserServiceSubscriber)userService.getServiceSubscriber()).showUser(response.body());
                         } 
                     });
                 }

@@ -6,9 +6,6 @@ import ar.edu.unsl.backend.model.entities.Usuario;
 
 public interface UserServiceSubscriber
 {
-    void showUser(User user);
-
-    void showUsers(List<User> users);
 
     public void logueado(String user);
 
