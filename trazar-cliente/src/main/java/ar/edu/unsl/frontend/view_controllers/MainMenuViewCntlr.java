@@ -68,7 +68,7 @@ public class MainMenuViewCntlr extends TableViewCntlr implements UserServiceSubs
     {
         try
         {
-            ((UserService)this.getService(0)).searchUser(this.searchUser.getText());   
+            //((UserService)this.getService(0)).searchUser(this.searchUser.getText());   
         }
         catch (Exception exception)
         {

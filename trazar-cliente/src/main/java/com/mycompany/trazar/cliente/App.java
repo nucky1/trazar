@@ -6,7 +6,6 @@ import javafx.scene.Scene;
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.WindowEvent;
-//import javafx.stage.StageStyle;
 import javafx.event.EventHandler;
 import javafx.application.Platform;
 import javafx.application.Application;
@@ -18,7 +17,6 @@ import ar.edu.unsl.backend.util.ExpressionChecker;
 import ar.edu.unsl.backend.model.services.UserService;
 import ar.edu.unsl.frontend.view_controllers.LoginCntrl;
 import ar.edu.unsl.frontend.view_controllers.ViewCntlr;
-import ar.edu.unsl.frontend.view_controllers.MainMenuViewCntlr;
 import java.net.MalformedURLException;
 
 public class App extends Application

@@ -6,7 +6,6 @@ import com.mycompany.trazar.cliente.App;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
-import java.io.IOException;
 import okhttp3.OkHttpClient;
 import javafx.application.Platform;
 import java.util.concurrent.TimeUnit;
@@ -16,6 +15,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import ar.edu.unsl.backend.model.services.UserService;
 import ar.edu.unsl.backend.model.interfaces.IUserOperator;
 import ar.edu.unsl.backend.model.repositories.UserRepository;
+import ar.edu.unsl.backend.util.Statics;
+import ar.edu.unsl.frontend.service_subscribers.RegistrarseServiceSubiscriber;
 import ar.edu.unsl.frontend.service_subscribers.UserServiceSubscriber;
 import com.google.gson.JsonObject;
 
@@ -257,5 +258,54 @@ public class UserOperatorRetrofit implements IUserOperator
     @Override
     public List<User> findAll() throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void verificarUsuario(String userName) {
+        this.userRepository.pedirDatos(userName, Statics.getUser().getToken()).enqueue(new Callback<Usuario>() {
+            @Override
+            public void onResponse(Call call, Response rspns) {
+                if(rspns.code()== 200)
+                {
+                    Platform.runLater(new Runnable()
+                    {
+                        @Override
+                        public void run()
+                        {
+                            if(rspns.body()==null){
+                                ((RegistrarseServiceSubiscriber)userService.getServiceSubscriber()).usuarioLibre();
+                            }else{
+                                if(((Usuario)rspns.body()).getId_local() == Statics.getUser().getId_local()){
+                                    ((RegistrarseServiceSubiscriber)userService.getServiceSubscriber()).usuarioLibre();
+                                }else{
+                                    ((RegistrarseServiceSubiscriber)userService.getServiceSubscriber()).usuarioOcupado();
+                                }
+                            }
+                        } 
+                    });
+                }else{
+                    Platform.runLater(new Runnable()
+                    {
+                        @Override
+                        public void run()
+                        {
+                            ((RegistrarseServiceSubiscriber)userService.getServiceSubscriber()).usuarioLibre();
+                        } 
+                    });
+                }
+            }
+
+            @Override
+            public void onFailure(Call call, Throwable thrwbl) {
+                Platform.runLater(new Runnable()
+                {
+                    @Override
+                    public void run()
+                    {
+                        userService.getServiceSubscriber().showError("F: Verificacion de usuario", null, new Exception(thrwbl));
+                    } 
+                });
+            }
+        });
     }
 }

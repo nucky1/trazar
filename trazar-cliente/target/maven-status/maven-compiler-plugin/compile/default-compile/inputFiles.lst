@@ -16,6 +16,7 @@ C:\Users\demig\Documents\trazar-master\trazar-cliente\src\main\java\com\mycompan
 C:\Users\demig\Documents\trazar-master\trazar-cliente\src\main\java\ar\edu\unsl\frontend\service_subscribers\AdminServiceSubscriber.java
 C:\Users\demig\Documents\trazar-master\trazar-cliente\src\main\java\ar\edu\unsl\backend\model\repositories\LocalRepository.java
 C:\Users\demig\Documents\trazar-master\trazar-cliente\src\main\java\ar\edu\unsl\backend\model\services\PersonaService.java
+C:\Users\demig\Documents\trazar-master\trazar-cliente\src\main\java\ar\edu\unsl\frontend\service_subscribers\RegistrarseServiceSubiscriber.java
 C:\Users\demig\Documents\trazar-master\trazar-cliente\src\main\java\ar\edu\unsl\backend\util\CustomAlert.java
 C:\Users\demig\Documents\trazar-master\trazar-cliente\src\main\java\ar\edu\unsl\backend\model\entities\Persona.java
 C:\Users\demig\Documents\trazar-master\trazar-cliente\src\main\java\ar\edu\unsl\backend\model\interfaces\IUserOperator.java
@@ -25,6 +26,7 @@ C:\Users\demig\Documents\trazar-master\trazar-cliente\src\main\java\ar\edu\unsl\
 C:\Users\demig\Documents\trazar-master\trazar-cliente\src\main\java\ar\edu\unsl\backend\util\Statics.java
 C:\Users\demig\Documents\trazar-master\trazar-cliente\src\main\java\ar\edu\unsl\backend\model\persistence\LocalOperatorRetrofit.java
 C:\Users\demig\Documents\trazar-master\trazar-cliente\src\main\java\ar\edu\unsl\backend\model\services\UserService.java
+C:\Users\demig\Documents\trazar-master\trazar-cliente\src\main\java\ar\edu\unsl\frontend\view_controllers\registrarLocalCntrl.java
 C:\Users\demig\Documents\trazar-master\trazar-cliente\src\main\java\ar\edu\unsl\backend\model\repositories\RegistroRepository.java
 C:\Users\demig\Documents\trazar-master\trazar-cliente\src\main\java\ar\edu\unsl\backend\util\AutoCompletionTool.java
 C:\Users\demig\Documents\trazar-master\trazar-cliente\src\main\java\ar\edu\unsl\backend\model\persistence\RegistroOperatorRetrofit.java

@@ -6,7 +6,30 @@ public class Local {
     private String nombre;
     private String telefono;
     private String direccion;
+    private String cuit;
     private Usuario usuario;
+
+    public String getCuit() {
+        return cuit;
+    }
+
+    public void setCuit(String cuit) {
+        this.cuit = cuit;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+    public void setUsername(String user) {
+        this.usuario.setUserName(user);
+    }
+    public void setPassword(String password) {
+        this.usuario.setPassword(password); 
+    }
     
     public Integer getId() {
         return id;

@@ -15,7 +15,6 @@ import ar.edu.unsl.backend.util.Statics;
 import ar.edu.unsl.frontend.service_subscribers.PersonaServiceSubscriber;
 import java.net.URL;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -79,7 +78,7 @@ public class registroFormCntrl extends ViewCntlr implements PersonaServiceSubscr
         fechaActual = LocalDate.now();
         lblFecha.setText(fechaActual.toString());
     }
-// ================================= public methods ==================================
+// ================================= private methods ==================================
     private void setCampos(boolean flag){
         txtApellido.setEditable(flag);
         txtNombre.setEditable(flag);
@@ -92,6 +91,7 @@ public class registroFormCntrl extends ViewCntlr implements PersonaServiceSubscr
             txtTelefono.setText(""); 
         }
     }
+    // ================================= public methods ==================================
     public void init()
     {
         this.manualInitialize();

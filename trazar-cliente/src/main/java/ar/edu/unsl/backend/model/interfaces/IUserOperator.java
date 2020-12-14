@@ -11,4 +11,6 @@ public interface IUserOperator extends CrudOperator<User>
     User delete(Integer id) throws Exception;
 
     public void pedirDatos(Usuario user);
+
+    public void verificarUsuario(String userName);
 }

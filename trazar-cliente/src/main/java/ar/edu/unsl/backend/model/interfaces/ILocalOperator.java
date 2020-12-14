@@ -18,4 +18,6 @@ public interface ILocalOperator {
     Local delete(Integer id) throws Exception;
 
     public List<Local> findAll();
+
+    public void update(Local l);
 }

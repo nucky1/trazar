@@ -151,6 +151,5 @@ public class localMainViewCntrl extends TableViewCntlr implements LocalServiceSu
     public void showVisitas(List<Persona> lista) {
         this.loadData(this.VISITA_TABLE_NUMBER, lista);
     }
-
     
 }

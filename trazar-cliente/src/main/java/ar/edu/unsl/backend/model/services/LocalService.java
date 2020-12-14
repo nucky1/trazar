@@ -5,10 +5,11 @@
  */
 package ar.edu.unsl.backend.model.services;
 
+
 import ar.edu.unsl.backend.model.entities.Local;
 import ar.edu.unsl.backend.model.interfaces.ILocalOperator;
 import ar.edu.unsl.backend.model.persistence.LocalOperatorRetrofit;
-import java.util.List;
+import ar.edu.unsl.backend.util.Statics;
 
 /**
  *
@@ -21,9 +22,10 @@ public class LocalService extends Service{
         this.operator = new LocalOperatorRetrofit(this);
     }
     
-    public void searchVisitas()throws Exception
-    {
-        List<Local> locales = this.operator.findAll();
+    public void findById() throws Exception {
+        this.operator.find(Statics.getUser().getId_local());
     }
-    
+    public void update(Local l) throws Exception {
+        this.operator.update(l);
+    }
 }

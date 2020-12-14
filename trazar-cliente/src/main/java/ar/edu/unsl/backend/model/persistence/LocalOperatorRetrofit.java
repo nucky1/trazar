@@ -9,10 +9,16 @@ import ar.edu.unsl.backend.model.entities.Local;
 import ar.edu.unsl.backend.model.interfaces.ILocalOperator;
 import ar.edu.unsl.backend.model.repositories.LocalRepository;
 import ar.edu.unsl.backend.model.services.LocalService;
+import ar.edu.unsl.backend.util.Statics;
+import ar.edu.unsl.frontend.service_subscribers.RegistrarseServiceSubiscriber;
 import com.mycompany.trazar.cliente.App;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import javafx.application.Platform;
 import okhttp3.OkHttpClient;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -55,6 +61,48 @@ public class LocalOperatorRetrofit implements ILocalOperator{
     
     @Override
     public Local find(Integer id) throws Exception {
+        this.localRepository.find(id, Statics.getUser().getToken()).enqueue(new Callback<Local>() {
+            @Override
+            public void onResponse(Call<Local> call, Response<Local> rspns) {
+                if(rspns.code()== 200)
+                {
+                    Platform.runLater(new Runnable()
+                    {
+                        @Override
+                        public void run()
+                        {
+                            ((RegistrarseServiceSubiscriber)localService.getServiceSubscriber()).datosMiLocal(rspns.body());
+                        } 
+                    });
+                }else{
+                    Platform.runLater(new Runnable()
+                    {
+                        @Override
+                        public void run()
+                        {
+                            localService.getServiceSubscriber().showError("F: No se pudo obtener los datos del local");
+                        } 
+                    });
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Local> call, Throwable thrwbl) {
+                Platform.runLater(new Runnable()
+                {
+                    @Override
+                    public void run()
+                    {
+                        localService.getServiceSubscriber().showError("F: Al buscar datos local(onFailure)", null, new Exception(thrwbl));
+                    } 
+                });
+            }
+        });
+        return null;
+    }
+
+    @Override
+    public List<Local> findAll() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -64,8 +112,44 @@ public class LocalOperatorRetrofit implements ILocalOperator{
     }
 
     @Override
-    public List<Local> findAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void update(Local l) {
+        this.localRepository.updateLocal(Statics.getUser().getId_local(), l, Statics.getUser().getToken()).enqueue(new Callback<Local>() {
+            @Override
+            public void onResponse(Call<Local> call, Response<Local> rspns) {
+                if(rspns.code()== 200)
+                {
+                    Platform.runLater(new Runnable()
+                    {
+                        @Override
+                        public void run()
+                        {
+                            ((RegistrarseServiceSubiscriber)localService.getServiceSubscriber()).exito();
+                        } 
+                    });
+                }else{
+                    Platform.runLater(new Runnable()
+                    {
+                        @Override
+                        public void run()
+                        {
+                            ((RegistrarseServiceSubiscriber)localService.getServiceSubscriber()).error();
+                        } 
+                    });
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Local> call, Throwable thrwbl) {
+                Platform.runLater(new Runnable()
+                {
+                    @Override
+                    public void run()
+                    {
+                        localService.getServiceSubscriber().showError("F: Al guardar local (onFailure)", null, new Exception(thrwbl));
+                    } 
+                });
+            }
+        });
     }
     
 }

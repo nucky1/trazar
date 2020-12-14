@@ -73,18 +73,10 @@ public class UserService extends Service
     
     
 
-    public void searchUser(String id) throws Exception
+    public void searchUser(String userName) throws Exception
     {
-        if(this.getExpressionChecker().onlyNumbers(id, false))
-        {
-            User user = this.operator.find(Integer.parseInt(id));
-            
-            if(user != null)
-            {
-                //((UserServiceSubscriber)this.getServiceSubscriber()).showUser(user);
-            }
-            
-        }
+        this.operator.verificarUsuario(userName);
+ 
     }
 
     public void registerUser(String name, String userName, String website, String email, String phone) throws Exception
