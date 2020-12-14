@@ -9,6 +9,7 @@ import ar.edu.unsl.backend.model.entities.Persona;
 import ar.edu.unsl.backend.model.services.LocalService;
 import ar.edu.unsl.backend.model.services.PersonaService;
 import ar.edu.unsl.backend.model.services.RegistroService;
+import ar.edu.unsl.backend.model.services.UserService;
 import ar.edu.unsl.frontend.service_subscribers.LocalServiceSubscriber;
 import java.net.URL;
 import java.time.LocalDate;
@@ -64,7 +65,7 @@ public class localMainViewCntrl extends TableViewCntlr implements LocalServiceSu
 
     @FXML
     private void modifylocal(ActionEvent event) {
-        this.createStage("Cambiar mis datos", "registroLocal", new LocalService()).getStage().show();
+        this.createStage("Cambiar mis datos", "registroLocal", new LocalService(), new UserService()).getStage().show();
     }
 
     @FXML

@@ -71,6 +71,7 @@ public class LocalOperatorRetrofit implements ILocalOperator{
                         @Override
                         public void run()
                         {
+                            System.out.println(rspns.body());
                             ((RegistrarseServiceSubiscriber)localService.getServiceSubscriber()).datosMiLocal(rspns.body());
                         } 
                     });

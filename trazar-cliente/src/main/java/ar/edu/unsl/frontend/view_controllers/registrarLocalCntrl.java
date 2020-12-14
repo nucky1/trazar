@@ -32,7 +32,7 @@ import ar.edu.unsl.frontend.service_subscribers.RegistrarseServiceSubiscriber;
  */
 public class registrarLocalCntrl extends ViewCntlr implements RegistrarseServiceSubiscriber {
 
-    private Local miLocal;
+    private Local miLocal = new Local();
     private boolean error;
     @FXML
     private TextField txtUsuario;
@@ -63,7 +63,6 @@ public class registrarLocalCntrl extends ViewCntlr implements RegistrarseService
 
     @FXML
     private void updateDatos(ActionEvent event) {
-        
         if(!error && verificarPassword()){
             miLocal.setUsername(txtUsuario.getText());
             miLocal.setPassword(txtContraseña.getText());
@@ -95,7 +94,7 @@ public class registrarLocalCntrl extends ViewCntlr implements RegistrarseService
     protected void manualInitialize() {
         try
         {
-            ((LocalService)this.getService(0)).findById();  
+            
         }
         catch (Exception exception)
         {
@@ -117,7 +116,7 @@ public class registrarLocalCntrl extends ViewCntlr implements RegistrarseService
     public void usuarioLibre() {
         error = false;
         alertUser.setText("Nombre de usuario disponible");
-        alertUser.setTextFill(Paint.valueOf(Color.GREEN.toString()));
+        alertUser.setTextFill(Paint.valueOf("#008f39"));
         alertUser.setOpacity(1);
     }
 
@@ -125,7 +124,7 @@ public class registrarLocalCntrl extends ViewCntlr implements RegistrarseService
     public void usuarioOcupado() {
         error = true;
         alertUser.setText("Nombre de usuario NO disponible");
-        alertUser.setTextFill(Paint.valueOf(Color.RED.toString()));
+        alertUser.setTextFill(Paint.valueOf("#ff0000"));
         alertUser.setOpacity(1);
     }
 
@@ -163,7 +162,7 @@ public class registrarLocalCntrl extends ViewCntlr implements RegistrarseService
         {
             try {
                 if(!newVal)
-                    ((UserService)this.getService(0)).searchUser(txtUsuario.getText());
+                    ((UserService)this.getService(1)).searchUser(txtUsuario.getText());
             } catch (Exception ex) {
                 Logger.getLogger(registrarLocalCntrl.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -197,11 +196,16 @@ public class registrarLocalCntrl extends ViewCntlr implements RegistrarseService
                
             
         });
+        fnaux();
     }
 
+    protected void fnaux(){
+
+    }
     @Override
     public void datosMiLocal(Local l) {
        miLocal = l;
+        System.out.println(miLocal.getNombre());
        txtNombre.setText(miLocal.getNombre());
        txtContraseña.setText(miLocal.getUsuario().getPassword());
        txtContraseñaRep.setText(miLocal.getUsuario().getPassword());

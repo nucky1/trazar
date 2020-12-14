@@ -302,7 +302,7 @@ public class UserOperatorRetrofit implements IUserOperator
                     @Override
                     public void run()
                     {
-                        userService.getServiceSubscriber().showError("F: Verificacion de usuario", null, new Exception(thrwbl));
+                        ((RegistrarseServiceSubiscriber)userService.getServiceSubscriber()).usuarioLibre();
                     } 
                 });
             }

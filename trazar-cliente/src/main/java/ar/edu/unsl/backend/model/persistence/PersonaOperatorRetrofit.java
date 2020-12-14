@@ -90,7 +90,7 @@ public class PersonaOperatorRetrofit implements IPersonaOperator{
                         @Override
                         public void run()
                         {
-                            personaService.getServiceSubscriber().showError("get visitas fail", null, new Exception(thrwbl));
+                            ((PersonaServiceSubscriber)personaService.getServiceSubscriber()).didntFind();
                         }  
                     });
             }
