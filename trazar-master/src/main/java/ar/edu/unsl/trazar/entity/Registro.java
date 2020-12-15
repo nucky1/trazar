@@ -20,10 +20,9 @@ public class Registro {
     @JoinColumn(name = "local_id")
     private Local local;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Temporal(value = TemporalType.DATE)
+    @Temporal(value = TemporalType.TIMESTAMP)
     private Date fecha;
-
+    
     @PrePersist
     public void prePersist(){
         fecha= new Date();

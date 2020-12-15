@@ -9,6 +9,8 @@ import ar.edu.unsl.backend.model.entities.Usuario;
 import com.google.gson.JsonObject;
 import retrofit2.Response;
 import retrofit2.http.Header;
+import retrofit2.http.PUT;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface UserRepository
@@ -19,4 +21,7 @@ public interface UserRepository
 
     @GET("/usuario?")
     Call<Usuario> pedirDatos(@Query("userName") String username,@Header("Authorization") String auth);
+    
+    @PUT("/usuario/{id}")
+   Call<Usuario> update(@Path("id") Integer id,@Body Usuario user,@Header("Authorization") String token);
 }

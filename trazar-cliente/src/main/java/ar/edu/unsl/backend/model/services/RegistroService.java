@@ -24,9 +24,7 @@ public class RegistroService extends Service{
         this.operator = new RegistroOperatorRetrofit(this);
         //this.operator = new UserOperatorApache(this);
     }
-    public void buscarEntreFechas(LocalDate value, LocalDate value0) {
-        String fechain = Statics.dateFormat(value);
-        String fechaOut = Statics.dateFormat(value0);
+    public void buscarEntreFechas(String fechain, String fechaOut) {
         Task<Void> t = new Task<Void>() {
             @Override
             protected Void call() throws Exception {

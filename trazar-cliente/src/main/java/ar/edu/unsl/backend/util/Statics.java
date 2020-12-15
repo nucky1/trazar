@@ -6,6 +6,7 @@
 package ar.edu.unsl.backend.util;
 
 import ar.edu.unsl.backend.model.entities.Usuario;
+import com.google.protobuf.Timestamp;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -21,9 +22,11 @@ public class Statics {
     private static Usuario user = null;
     static SimpleDateFormat plantilla = new SimpleDateFormat("yyyy-MM-dd");
     
-    public static String dateFormat(LocalDate date){
-        return date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-        //Locale locale = new Locale("us", "US");
+    public static String dateFormat(LocalDate date, int hora, int min){
+        String fecha = date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        fecha += " "+hora+":"+min;
+        return fecha;
+//Locale locale = new Locale("us", "US");
         
         //DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.DEFAULT, locale);
         //return plantilla.format(date);

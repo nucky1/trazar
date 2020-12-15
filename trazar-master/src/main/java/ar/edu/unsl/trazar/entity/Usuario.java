@@ -47,8 +47,8 @@ public class Usuario {
         this.password = password;
     }
 
-    public Integer getLocal() {
-        return local.getId();
+    public Local getLocal() {
+        return local;
     }
 
     public void setLocal(Local local) {

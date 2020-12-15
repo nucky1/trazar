@@ -10,6 +10,7 @@ import ar.edu.unsl.backend.model.services.LocalService;
 import ar.edu.unsl.backend.model.services.PersonaService;
 import ar.edu.unsl.backend.model.services.RegistroService;
 import ar.edu.unsl.backend.model.services.UserService;
+import ar.edu.unsl.backend.util.Statics;
 import ar.edu.unsl.frontend.service_subscribers.LocalServiceSubscriber;
 import java.net.URL;
 import java.time.LocalDate;
@@ -46,6 +47,14 @@ public class localMainViewCntrl extends TableViewCntlr implements LocalServiceSu
     @FXML
     private TextField txtFiltrar;
     @FXML
+    private TextField fromHora;
+    @FXML
+    private TextField fromMin;
+    @FXML
+    private TextField toHora;
+    @FXML
+    private TextField toMin;
+    @FXML
     private Button btnBuscar;
     @FXML
     private TableView<Persona> personasTable;
@@ -65,12 +74,15 @@ public class localMainViewCntrl extends TableViewCntlr implements LocalServiceSu
 
     @FXML
     private void modifylocal(ActionEvent event) {
+
         this.createStage("Cambiar mis datos", "registroLocal", new LocalService(), new UserService()).getStage().show();
     }
 
     @FXML
     private void buscarVisitas(ActionEvent event) {
-        ((RegistroService)this.getService(1)).buscarEntreFechas(fromDate.getValue(),toDate.getValue());
+        String f= Statics.dateFormat(fromDate.getValue(), Integer.parseInt(fromHora.getText()),Integer.parseInt(fromMin.getText()));
+        String t= Statics.dateFormat(toDate.getValue(), Integer.parseInt(toHora.getText()),Integer.parseInt(toMin.getText()) );
+        ((RegistroService)this.getService(1)).buscarEntreFechas(f,t);
     }
 // ================================= protected methods ===============================
     @Override
@@ -79,7 +91,9 @@ public class localMainViewCntrl extends TableViewCntlr implements LocalServiceSu
         {
             fromDate.setValue(LocalDate.now());
             toDate.setValue(LocalDate.now());
-            ((RegistroService)this.getService(1)).buscarEntreFechas(fromDate.getValue(),toDate.getValue());  
+            String f= Statics.dateFormat(fromDate.getValue(), 00,00);
+        String t= Statics.dateFormat(toDate.getValue(), 23,59 );
+        ((RegistroService)this.getService(1)).buscarEntreFechas(f,t); 
         }
         catch (Exception exception)
         {

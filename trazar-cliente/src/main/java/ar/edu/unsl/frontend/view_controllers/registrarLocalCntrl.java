@@ -6,10 +6,12 @@
 package ar.edu.unsl.frontend.view_controllers;
 
 import ar.edu.unsl.backend.model.entities.Local;
+import ar.edu.unsl.backend.model.entities.Usuario;
 import ar.edu.unsl.backend.model.services.LocalService;
 import ar.edu.unsl.backend.model.services.RegistroService;
 import ar.edu.unsl.backend.model.services.UserService;
 import ar.edu.unsl.backend.util.CustomAlert;
+import ar.edu.unsl.backend.util.Statics;
 import java.awt.Color;
 import java.net.URL;
 import java.time.LocalDate;
@@ -24,6 +26,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Paint;
 import ar.edu.unsl.frontend.service_subscribers.RegistrarseServiceSubiscriber;
+import com.sun.org.apache.bcel.internal.generic.INSTANCEOF;
 
 /**
  * FXML Controller class
@@ -51,28 +54,32 @@ public class registrarLocalCntrl extends ViewCntlr implements RegistrarseService
     @FXML
     private Button btnCancel;
     @FXML
-    private Button btnFinalizar;
-    @FXML
     private Label alertUser;
     // ================================== FXML methods ==================================
+    @FXML
+    private Button btnguardarUsuario;
+    @FXML
+    private Button btnGuardarLocal;
 
     @FXML
     private void cancelarOperacion(ActionEvent event) {
         this.getStage().close();
     }
-
     @FXML
-    private void updateDatos(ActionEvent event) {
+    private void updateUser(ActionEvent event) {
+        if(miLocal == null){
+            miLocal = new Local();
+        }
         if(!error && verificarPassword()){
-            miLocal.setUsername(txtUsuario.getText());
-            miLocal.setPassword(txtContraseña.getText());
-            miLocal.setTelefono(txtTelefono.getText());
-            miLocal.setCuit(txtcuit.getText());
-            miLocal.setDireccion(txtDireccion.getText());
-            miLocal.setNombre(txtNombre.getText());
+            
+            Usuario user = new Usuario();
+            user.setUserName(txtUsuario.getText());
+            user.setPassword(txtContraseña.getText());
+            user.setId(Statics.getUser().getId());
             try {
-                ((LocalService)this.getService(0)).update(miLocal);
+                ((UserService)this.getService(1)).update(user);
             } catch (Exception ex) {
+                System.out.println(this.getService(1).getClass().toString());
                 Logger.getLogger(registrarLocalCntrl.class.getName()).log(Level.SEVERE, null, ex);
             }
         }else{
@@ -86,15 +93,31 @@ public class registrarLocalCntrl extends ViewCntlr implements RegistrarseService
                 Logger.getLogger(registroFormCntrl.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
     }
 
+    @FXML
+    private void updateLocal(ActionEvent event) {
+        if(miLocal == null){
+            miLocal = new Local();
+        }
+            miLocal.setId(Statics.getUser().getId_local());
+            miLocal.setTelefono(txtTelefono.getText());
+            miLocal.setCuit(txtcuit.getText());
+            miLocal.setDireccion(txtDireccion.getText());
+            miLocal.setNombre(txtNombre.getText());
+            try {
+                ((LocalService)this.getService(0)).update(miLocal);
+            } catch (Exception ex) {
+                Logger.getLogger(registrarLocalCntrl.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }
+ 
 // ================================= protected methods ===============================
     @Override
     protected void manualInitialize() {
         try
         {
-            
+            ((LocalService)this.getService(0)).findById();
         }
         catch (Exception exception)
         {
@@ -196,23 +219,19 @@ public class registrarLocalCntrl extends ViewCntlr implements RegistrarseService
                
             
         });
-        fnaux();
     }
 
-    protected void fnaux(){
-
-    }
     @Override
     public void datosMiLocal(Local l) {
        miLocal = l;
-        System.out.println(miLocal.getNombre());
+       System.out.println(miLocal.getNombre());
        txtNombre.setText(miLocal.getNombre());
-       txtContraseña.setText(miLocal.getUsuario().getPassword());
-       txtContraseñaRep.setText(miLocal.getUsuario().getPassword());
        txtDireccion.setText(miLocal.getDireccion());
        txtTelefono.setText(miLocal.getTelefono());
        txtcuit.setText(miLocal.getCuit());
-       txtUsuario.setText(miLocal.getUsuario().getUserName());
+       
     }
+
+
     
 }

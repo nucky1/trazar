@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 import javafx.application.Platform;
 import okhttp3.OkHttpClient;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -64,6 +65,7 @@ public class LocalOperatorRetrofit implements ILocalOperator{
         this.localRepository.find(id, Statics.getUser().getToken()).enqueue(new Callback<Local>() {
             @Override
             public void onResponse(Call<Local> call, Response<Local> rspns) {
+                
                 if(rspns.code()== 200)
                 {
                     Platform.runLater(new Runnable()

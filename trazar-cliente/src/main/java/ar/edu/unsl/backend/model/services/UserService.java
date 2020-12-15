@@ -157,4 +157,15 @@ public class UserService extends Service
         };
         javafx.application.Platform.runLater(t);
     }
+
+    public void update(Usuario user) {
+        Task<Void> t = new Task<Void>() {
+            @Override
+            protected Void call() throws Exception {
+                operator.update(user);
+                return null;
+            }
+        };
+        javafx.application.Platform.runLater(t);
+    }
 }

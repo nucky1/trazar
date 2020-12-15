@@ -28,4 +28,8 @@ public class UsuarioController {
     public Usuario getUsuario(@RequestParam(required = false) String userName){
         return usuarioService.find(userName);
     }
+    @PutMapping("/{id}")
+    public Usuario updateUsuario(@PathVariable Integer id,@RequestBody Usuario usuario){
+        return usuarioService.updateUsuario(id,usuario);
+    }
 }

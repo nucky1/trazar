@@ -13,4 +13,6 @@ public interface IUserOperator extends CrudOperator<User>
     public void pedirDatos(Usuario user);
 
     public void verificarUsuario(String userName);
+
+    public void update(Usuario user);
 }

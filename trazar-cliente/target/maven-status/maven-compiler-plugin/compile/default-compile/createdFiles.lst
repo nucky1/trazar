@@ -5,6 +5,7 @@ ar\edu\unsl\backend\model\persistence\RegistroOperatorRetrofit$1$3.class
 ar\edu\unsl\backend\model\entities\User.class
 ar\edu\unsl\backend\model\persistence\LocalOperatorRetrofit$1$2.class
 ar\edu\unsl\frontend\view_controllers\MainMenuViewCntlr.class
+ar\edu\unsl\backend\model\persistence\UserOperatorRetrofit$4$2.class
 ar\edu\unsl\frontend\service_subscribers\ServiceSubscriber.class
 com\mycompany\trazar\cliente\App.class
 ar\edu\unsl\backend\model\entities\Registro.class
@@ -20,6 +21,7 @@ ar\edu\unsl\backend\model\services\PersonaService.class
 ar\edu\unsl\backend\util\CustomAlert.class
 ar\edu\unsl\frontend\service_subscribers\UserServiceSubscriber.class
 ar\edu\unsl\backend\model\persistence\UserOperatorRetrofit$2$1.class
+ar\edu\unsl\backend\model\persistence\UserOperatorRetrofit$4.class
 ar\edu\unsl\frontend\view_controllers\localMainViewCntrl.class
 ar\edu\unsl\backend\model\persistence\RegistroOperatorRetrofit$2$1.class
 ar\edu\unsl\backend\model\services\RegistroService$1.class
@@ -31,6 +33,7 @@ ar\edu\unsl\backend\model\services\PersonaService$2.class
 ar\edu\unsl\backend\model\persistence\RegistroOperatorRetrofit$1$1.class
 com\mycompany\trazar\cliente\App$1.class
 ar\edu\unsl\backend\model\persistence\PersonaOperatorRetrofit$2$2.class
+ar\edu\unsl\backend\model\persistence\LocalOperatorRetrofit$2$2.class
 ar\edu\unsl\frontend\service_subscribers\LocalServiceSubscriber.class
 ar\edu\unsl\backend\model\persistence\UserOperatorRetrofit$1$2.class
 ar\edu\unsl\backend\model\persistence\PersonaOperatorRetrofit$2.class
@@ -39,13 +42,17 @@ ar\edu\unsl\backend\model\persistence\RegistroOperatorRetrofit$1$2.class
 ar\edu\unsl\backend\model\persistence\UserOperatorRetrofit$3.class
 ar\edu\unsl\backend\model\services\LocalService.class
 ar\edu\unsl\frontend\view_controllers\MainMenuViewCntlr$1.class
+ar\edu\unsl\backend\model\persistence\UserOperatorRetrofit$4$3.class
 ar\edu\unsl\backend\model\interfaces\IRegistroOperator.class
 ar\edu\unsl\backend\model\persistence\PersonaOperatorRetrofit$2$3.class
+ar\edu\unsl\backend\model\persistence\LocalOperatorRetrofit$2$3.class
 ar\edu\unsl\backend\model\services\PersonaService$1.class
 ar\edu\unsl\frontend\view_controllers\LoginCntrl.class
 ar\edu\unsl\backend\model\persistence\UserOperatorRetrofit$1$1.class
 ar\edu\unsl\backend\model\persistence\RegistroOperatorRetrofit$1.class
+ar\edu\unsl\backend\model\persistence\LocalOperatorRetrofit$2.class
 ar\edu\unsl\backend\model\persistence\UserOperatorRetrofit$2.class
+ar\edu\unsl\backend\model\services\UserService$3.class
 ar\edu\unsl\backend\util\Statics.class
 ar\edu\unsl\backend\model\interfaces\IUserOperator.class
 ar\edu\unsl\backend\model\persistence\PersonaOperatorRetrofit$1$2.class
@@ -61,7 +68,9 @@ ar\edu\unsl\frontend\view_controllers\registroFormCntrl.class
 ar\edu\unsl\backend\model\persistence\RegistroOperatorRetrofit$2$2.class
 ar\edu\unsl\backend\util\AutoCompletionTool.class
 ar\edu\unsl\backend\model\persistence\UserOperatorRetrofit$3$3.class
+ar\edu\unsl\backend\model\persistence\LocalOperatorRetrofit$2$1.class
 ar\edu\unsl\backend\model\repositories\RegistroRepository.class
+ar\edu\unsl\backend\model\persistence\UserOperatorRetrofit$4$1.class
 ar\edu\unsl\backend\model\persistence\LocalOperatorRetrofit$1$3.class
 ar\edu\unsl\backend\util\ExpressionChecker.class
 ar\edu\unsl\backend\model\entities\Local.class

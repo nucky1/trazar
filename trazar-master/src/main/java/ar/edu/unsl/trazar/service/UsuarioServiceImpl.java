@@ -32,4 +32,14 @@ public class UsuarioServiceImpl implements UsuarioService {
 	public Usuario find(String userName) {
 		return usuarioRepository.findByUserName(userName);
 	}
+	@Override
+    public Usuario updateUsuario(Integer id,Usuario usuario) {
+        Usuario usuarioAux=usuarioRepository.findById(id).orElse(null);
+        if(usuarioAux!=null){
+            usuarioAux.setPassword(bCryptPasswordEncoder.encode(usuario.getPassword()));
+            usuarioAux.setUserName(usuario.getUserName());
+            usuarioAux=usuarioRepository.save(usuarioAux);
+        }
+        return usuarioAux;
+    }
 }

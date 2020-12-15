@@ -39,8 +39,8 @@ public class Persona {
         return dni;
     }
 
-    public void setNumeroDocumento(String numeroDocumento) {
-        this.dni = numeroDocumento;
+    public void setNumeroDocumento(String dni) {
+        this.dni = dni;
     }
 
     public String getTelefono() {

@@ -7,14 +7,19 @@ public class Usuario {
     private String password;
     private String tipo;
     private String token;
-    private Integer local;
+    private Local local;
 
-    public Integer getId_local() {
+    public Local getLocal() {
         return local;
     }
 
-    public void setId_local(Integer local) {
+    public void setLocal(Local local) {
         this.local = local;
+    }
+
+    
+    public Integer getId_local() {
+        return local.getId();
     }
 
     

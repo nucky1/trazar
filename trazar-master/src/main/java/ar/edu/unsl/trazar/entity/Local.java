@@ -33,8 +33,17 @@ public class Local {
     public String getNombre() {
         return nombre;
     }
+    
+    
+    public String getCuit() {
+		return cuit;
+	}
 
-    public void setNombre(String nombre) {
+	public void setCuit(String cuit) {
+		this.cuit = cuit;
+	}
+
+	public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 

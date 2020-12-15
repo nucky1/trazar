@@ -187,7 +187,7 @@ public class UserOperatorRetrofit implements IUserOperator
                         @Override
                         public void run()
                         {
-                            userService.getServiceSubscriber().showError("Cannot obtain user ", rspns.errorBody().toString(), new Exception("Error response"));
+                            ((UserServiceSubscriber)userService.getServiceSubscriber()).usuarioInexistente();
                         } 
                     });
                 }
@@ -304,6 +304,47 @@ public class UserOperatorRetrofit implements IUserOperator
                     {
                         ((RegistrarseServiceSubiscriber)userService.getServiceSubscriber()).usuarioLibre();
                     } 
+                });
+            }
+        });
+    }
+
+    @Override
+    public void update(Usuario user) {
+        this.userRepository.update(user.getId(),user,Statics.getUser().getToken()).enqueue(new Callback<Usuario>() {
+            @Override
+            public void onResponse(Call<Usuario> call, Response<Usuario> rspns) {
+                if(rspns.code()== 200)
+                {
+                    Platform.runLater(new Runnable()
+                    {
+                        @Override
+                        public void run()
+                        {
+                            ((RegistrarseServiceSubiscriber)userService.getServiceSubscriber()).exito();
+                        } 
+                    });
+                }else{
+                    Platform.runLater(new Runnable()
+                    {
+                        @Override
+                        public void run()
+                        {
+                            ((RegistrarseServiceSubiscriber)userService.getServiceSubscriber()).error();
+                        } 
+                    });
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Usuario> call, Throwable thrwbl) {
+                Platform.runLater(new Runnable()
+                {
+                    @Override
+                    public void run()
+                    {
+                        userService.getServiceSubscriber().showError("F: Al guardar local (onFailure)", null, new Exception(thrwbl));
+                    }
                 });
             }
         });

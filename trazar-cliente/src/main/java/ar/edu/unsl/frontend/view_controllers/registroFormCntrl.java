@@ -15,6 +15,8 @@ import ar.edu.unsl.backend.util.Statics;
 import ar.edu.unsl.frontend.service_subscribers.PersonaServiceSubscriber;
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -33,7 +35,7 @@ import javafx.scene.control.TextField;
 public class registroFormCntrl extends ViewCntlr implements PersonaServiceSubscriber {
 
     private int idPersona = -1;
-    private LocalDate fechaActual = LocalDate.now();
+    private LocalDateTime fechaActual = LocalDateTime.now();
     @FXML
     private Button btnRegistrar;
     @FXML
@@ -75,7 +77,7 @@ public class registroFormCntrl extends ViewCntlr implements PersonaServiceSubscr
 // ================================= protected methods ===============================
     @Override
     protected void manualInitialize() {
-        fechaActual = LocalDate.now();
+        fechaActual = LocalDateTime.now();
         lblFecha.setText(fechaActual.toString());
     }
 // ================================= private methods ==================================
@@ -115,6 +117,7 @@ public class registroFormCntrl extends ViewCntlr implements PersonaServiceSubscr
     @Override
     public void didntFind() {
         lblAlerta.setOpacity(1);
+        lblAlerta.setText("La persona es nueva, por favor ingrese todos los datos.");
         setCampos(true);
     }
 
@@ -125,14 +128,13 @@ public class registroFormCntrl extends ViewCntlr implements PersonaServiceSubscr
         l.setId(Statics.getUser().getId_local());
         r.setPersona(persona);
         r.setLocal(l);
-        String s = Statics.dateFormat(fechaActual);
+        String s = fechaActual.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
         r.setFecha(s);
         ((RegistroService)this.getService(1)).insertarRegistro(r);
     }
 
     @Override
     public void showExito(Registro body) {
-        this.getStage().close();
         CustomAlert alerta = new CustomAlert(Alert.AlertType.INFORMATION, "Exito", "Se registro la visita con exito");
         try {
             alerta.show();
