@@ -168,4 +168,8 @@ public class UserService extends Service
         };
         javafx.application.Platform.runLater(t);
     }
+
+    public void insert(Usuario user) {
+        this.operator.insertar(user);
+    }
 }

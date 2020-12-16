@@ -28,4 +28,8 @@ public class LocalService extends Service{
     public void update(Local l) throws Exception {
         this.operator.update(l);
     }
+
+    public void insertLocal(Local miLocal) {
+        this.operator.insert(miLocal);
+    }
 }

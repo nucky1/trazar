@@ -18,7 +18,10 @@ public interface UserRepository
     
     @POST("/login")
     Call<Response<Void>> login(@Body JsonObject login);
-
+    
+    @POST("/usuario")
+    Call<Usuario> insertar(@Body Usuario user);
+    
     @GET("/usuario?")
     Call<Usuario> pedirDatos(@Query("userName") String username,@Header("Authorization") String auth);
     

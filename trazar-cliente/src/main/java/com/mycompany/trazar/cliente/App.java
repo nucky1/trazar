@@ -23,7 +23,8 @@ public class App extends Application
 {
     public static final String GUIs_LOCATION = App.class.getResource("")+ "../../../../frontend/GUIs/";
     public static final String FILE_EXTENSION = ".fxml";
-    public static final String API_HOSTNAME = "http://localhost:8080";
+    //public static final String API_HOSTNAME = "http://localhost:8080";
+    public static final String API_HOSTNAME = "http://35.184.148.44:8080/trazar/";
 
     @Override
     public void start(final Stage stage) throws MalformedURLException, IOException
@@ -41,7 +42,7 @@ public class App extends Application
                 @Override
                 public void handle(WindowEvent e)
                 {
-                    new CustomAlert(AlertType.INFORMATION, "EXIT", "Do you want to close this system?")
+                    new CustomAlert(AlertType.INFORMATION, "EXIT", "¿Estas seguro que desea salir?")
                             .customShow().ifPresent(response ->
                             {
                                 if(response == ButtonType.OK)
@@ -66,8 +67,6 @@ public class App extends Application
     {
         try{
         System.out.println(GUIs_LOCATION);
-            
-        
         launch();
         }catch(Exception e){
             e.printStackTrace();

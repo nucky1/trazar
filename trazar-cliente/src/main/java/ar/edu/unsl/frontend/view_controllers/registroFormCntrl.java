@@ -14,7 +14,6 @@ import ar.edu.unsl.backend.util.CustomAlert;
 import ar.edu.unsl.backend.util.Statics;
 import ar.edu.unsl.frontend.service_subscribers.PersonaServiceSubscriber;
 import java.net.URL;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
@@ -26,6 +25,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 
 /**
  * FXML Controller class
@@ -57,6 +57,26 @@ public class registroFormCntrl extends ViewCntlr implements PersonaServiceSubscr
 
 // ================================== FXML methods ==================================
 
+        @FXML
+    private void checkNumber(KeyEvent event) {
+        String s = event.getCharacter();
+        if(s.length()!= 1)
+            event.consume();
+        char c = s.charAt(0);
+        if((c<'0'||c>'9'))
+            event.consume();
+    }
+
+    @FXML
+    private void checkNumberTel(KeyEvent event) {
+        String s = event.getCharacter();
+        if(s.length()!= 1)
+            event.consume();
+        char c = s.charAt(0);
+        if((c<'0'||c>'9'))
+            event.consume();
+    }
+    
     @FXML
     private void registrarVisita(ActionEvent event) {
         Persona p = new Persona();
@@ -78,7 +98,7 @@ public class registroFormCntrl extends ViewCntlr implements PersonaServiceSubscr
     @Override
     protected void manualInitialize() {
         fechaActual = LocalDateTime.now();
-        lblFecha.setText(fechaActual.toString());
+        lblFecha.setText(fechaActual.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
     }
 // ================================= private methods ==================================
     private void setCampos(boolean flag){
@@ -101,7 +121,12 @@ public class registroFormCntrl extends ViewCntlr implements PersonaServiceSubscr
     
     @Override
     public void customInitialize(URL location, ResourceBundle resources) throws Exception {
-       
+       txtDocumento.focusedProperty().addListener((observable, oldValue, newValue) -> {
+           if(!newValue){ 
+                lblAlerta.setOpacity(0);
+                ((PersonaService)this.getService(0)).findPersona(this.txtDocumento.getText());
+           }
+       });
     }
 
     @Override
@@ -117,7 +142,7 @@ public class registroFormCntrl extends ViewCntlr implements PersonaServiceSubscr
     @Override
     public void didntFind() {
         lblAlerta.setOpacity(1);
-        lblAlerta.setText("La persona es nueva, por favor ingrese todos los datos.");
+        lblAlerta.setText("La persona es nueva.\n Por favor ingrese todos los datos.");
         setCampos(true);
     }
 
@@ -128,13 +153,14 @@ public class registroFormCntrl extends ViewCntlr implements PersonaServiceSubscr
         l.setId(Statics.getUser().getId_local());
         r.setPersona(persona);
         r.setLocal(l);
-        String s = fechaActual.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
-        r.setFecha(s);
+        String s = fechaActual.format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss"));
+        r.setFecha(s+".604Z");
         ((RegistroService)this.getService(1)).insertarRegistro(r);
     }
 
     @Override
     public void showExito(Registro body) {
+        this.getStage().close();
         CustomAlert alerta = new CustomAlert(Alert.AlertType.INFORMATION, "Exito", "Se registro la visita con exito");
         try {
             alerta.show();
@@ -144,6 +170,8 @@ public class registroFormCntrl extends ViewCntlr implements PersonaServiceSubscr
         } catch (InterruptedException ex) {
             Logger.getLogger(registroFormCntrl.class.getName()).log(Level.SEVERE, null, ex);
         }
+        this.getPrevViewCntlr().cargarCosas("");
+        
     }
 
     @Override
@@ -158,8 +186,10 @@ public class registroFormCntrl extends ViewCntlr implements PersonaServiceSubscr
         } catch (InterruptedException ex) {
             Logger.getLogger(registroFormCntrl.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
+    } 
 
-    
-    
+    @Override
+    public void cargarCosas(String... cosas) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

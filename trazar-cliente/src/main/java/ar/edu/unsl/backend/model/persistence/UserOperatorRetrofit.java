@@ -349,4 +349,45 @@ public class UserOperatorRetrofit implements IUserOperator
             }
         });
     }
+
+    @Override
+    public void insertar(Usuario user) {
+        this.userRepository.insertar(user).enqueue(new Callback<Usuario>() {
+            @Override
+            public void onResponse(Call<Usuario> call, Response<Usuario> rspns) {
+                if(rspns.code()== 200)
+                {
+                    Platform.runLater(new Runnable()
+                    {
+                        @Override
+                        public void run()
+                        {
+                            ((RegistrarseServiceSubiscriber)userService.getServiceSubscriber()).exito();
+                        } 
+                    });
+                }else{
+                    Platform.runLater(new Runnable()
+                    {
+                        @Override
+                        public void run()
+                        {
+                            ((RegistrarseServiceSubiscriber)userService.getServiceSubscriber()).error();
+                        } 
+                    });
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Usuario> call, Throwable thrwbl) {
+                Platform.runLater(new Runnable()
+                {
+                    @Override
+                    public void run()
+                    {
+                        userService.getServiceSubscriber().showError("F: Al guardar local (onFailure)", null, new Exception(thrwbl));
+                    }
+                });
+            }
+        });
+    }
 }

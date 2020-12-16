@@ -72,7 +72,6 @@ public abstract class ViewCntlr implements Initializable, ServiceSubscriber
         try
         {
             fxmlLoader = new FXMLLoader(new URL(App.GUIs_LOCATION+fileName+App.FILE_EXTENSION));
-            fxmlLoader.setRoot(root);
             scene = new Scene(fxmlLoader.load());
         }
         catch(Exception exception)
@@ -108,6 +107,11 @@ public abstract class ViewCntlr implements Initializable, ServiceSubscriber
     }
 
     // =================================== public methods ===================================
+
+    /**
+     *
+     */
+    public abstract void cargarCosas(String ... cosas);
     /**
      * This method will be called automatically before the view is displayed.
      * Use this method to initialize the controller.
@@ -182,4 +186,5 @@ public abstract class ViewCntlr implements Initializable, ServiceSubscriber
     {
         
     }
+    
 }

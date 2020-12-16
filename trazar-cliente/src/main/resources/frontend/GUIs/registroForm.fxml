@@ -6,16 +6,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<fx:root maxHeight="601.0" maxWidth="382.0" minHeight="501.0" minWidth="282.0" prefHeight="501.0" prefWidth="282.0" type="Pane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ar.edu.unsl.frontend.view_controllers.registroFormCntrl">
+<Pane maxHeight="601.0" maxWidth="382.0" minHeight="501.0" minWidth="282.0" prefHeight="501.0" prefWidth="282.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ar.edu.unsl.frontend.view_controllers.registroFormCntrl">
 
         <Label layoutX="31.0" layoutY="24.0" prefHeight="17.0" prefWidth="107.0" text="Documento" />
      <AnchorPane layoutX="31.0" layoutY="52.0">
         <children>
-              <TextField fx:id="txtDocumento" prefHeight="25.0" prefWidth="174.0" />
+              <TextField fx:id="txtDocumento" onKeyTyped="#checkNumber" prefHeight="25.0" prefWidth="174.0" />
               <Button fx:id="btnBuscar" layoutX="185.0" mnemonicParsing="false" onAction="#buscarPersona" text="Buscar" />
         </children>
      </AnchorPane>
-        <Label fx:id="lblAlerta" layoutX="31.0" layoutY="77.0" opacity="0.0" prefHeight="17.0" prefWidth="122.0" text="La persona es nueva" textFill="#fc0000" />
+        <Label fx:id="lblAlerta" accessibleRole="TEXT_AREA" layoutX="31.0" layoutY="77.0" opacity="0.0" prefHeight="37.0" prefWidth="236.0" text="La persona es nueva, por favor ingrese todos los datos." textFill="#fc0000" />
         <Label layoutX="33.0" layoutY="123.0" prefHeight="17.0" prefWidth="107.0" text="Nombre" />
         <TextField fx:id="txtNombre" layoutX="31.0" layoutY="148.0" prefHeight="25.0" prefWidth="174.0" />
         <Label layoutX="33.0" layoutY="180.0" prefHeight="17.0" prefWidth="107.0" text="Apellido" />
@@ -23,9 +23,9 @@
         <Label layoutX="33.0" layoutY="241.0" prefHeight="17.0" prefWidth="107.0" text="Dirección" />
         <TextField fx:id="txtDireccion" layoutX="31.0" layoutY="266.0" prefHeight="25.0" prefWidth="174.0" />
         <Label layoutX="33.0" layoutY="303.0" prefHeight="17.0" prefWidth="107.0" text="Telefono" />
-        <TextField fx:id="txtTelefono" layoutX="31.0" layoutY="327.0" prefHeight="25.0" prefWidth="174.0" />
-        <Label fx:id="lblFecha" layoutX="33.0" layoutY="411.0" prefHeight="17.0" prefWidth="107.0" text="15/10/2020" />
+        <TextField fx:id="txtTelefono" layoutX="31.0" layoutY="327.0" onKeyTyped="#checkNumberTel" prefHeight="25.0" prefWidth="174.0" />
+        <Label fx:id="lblFecha" layoutX="33.0" layoutY="411.0" prefHeight="17.0" prefWidth="174.0" text="15/10/2020" />
         <Label layoutX="31.0" layoutY="387.0" prefHeight="17.0" prefWidth="107.0" text="Fecha de ingreso:" />
 
            <Button fx:id="btnRegistrar" layoutX="118.0" layoutY="455.0" mnemonicParsing="false" onAction="#registrarVisita" text="Registrar" />
-</fx:root>
+</Pane>

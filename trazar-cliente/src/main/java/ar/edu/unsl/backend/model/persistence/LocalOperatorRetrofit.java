@@ -16,7 +16,6 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 import javafx.application.Platform;
 import okhttp3.OkHttpClient;
-import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -135,6 +134,48 @@ public class LocalOperatorRetrofit implements ILocalOperator{
                         @Override
                         public void run()
                         {
+                            ((RegistrarseServiceSubiscriber)localService.getServiceSubscriber()).error();
+                        } 
+                    });
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Local> call, Throwable thrwbl) {
+                Platform.runLater(new Runnable()
+                {
+                    @Override
+                    public void run()
+                    {
+                        localService.getServiceSubscriber().showError("F: Al guardar local (onFailure)", null, new Exception(thrwbl));
+                    } 
+                });
+            }
+        });
+    }
+
+    @Override
+    public void insert(Local miLocal) {
+        this.localRepository.insert(miLocal).enqueue(new Callback<Local>() {
+            @Override
+            public void onResponse(Call<Local> call, Response<Local> rspns) {
+                if(rspns.code()== 200)
+                {
+                    Platform.runLater(new Runnable()
+                    {
+                        @Override
+                        public void run()
+                        {
+                            ((RegistrarseServiceSubiscriber)localService.getServiceSubscriber()).insertUser(rspns.body());
+                        } 
+                    });
+                }else{
+                    Platform.runLater(new Runnable()
+                    {
+                        @Override
+                        public void run()
+                        {
+                            System.out.println("asdasdasd");
                             ((RegistrarseServiceSubiscriber)localService.getServiceSubscriber()).error();
                         } 
                     });
