@@ -1,5 +1,6 @@
 package ar.edu.unsl.trazar.service;
 
+import ar.edu.unsl.trazar.entity.Usuario;
 import ar.edu.unsl.trazar.repository.LocalRepository;
 import ar.edu.unsl.trazar.entity.Local;
 import org.springframework.stereotype.Service;
@@ -38,6 +39,11 @@ public class LocalServiceImpl implements LocalService {
             local.setId(id);
             return localRepository.save(local);
         }
+    }
+
+    @Override
+    public Local getByCuit(String cuit) {
+        return localRepository.findByCuit(cuit);
     }
 
 }

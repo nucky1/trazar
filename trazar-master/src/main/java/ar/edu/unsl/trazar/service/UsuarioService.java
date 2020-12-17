@@ -11,4 +11,5 @@ public interface UsuarioService {
     List<Usuario> getUsuarios();
     Usuario find(String userName);
     Usuario updateUsuario(Integer id,Usuario usuario);
+    Usuario recuperarUsuario(String cuit);
 }

@@ -21,12 +21,8 @@ public class Registro {
     private Local local;
 
     @Temporal(value = TemporalType.TIMESTAMP)
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date fecha;
-    
-    @PrePersist
-    public void prePersist(){
-        fecha= new Date();
-    }
 
     public Integer getId() {
         return id;

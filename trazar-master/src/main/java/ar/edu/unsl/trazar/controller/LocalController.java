@@ -1,6 +1,7 @@
 package ar.edu.unsl.trazar.controller;
 
 import ar.edu.unsl.trazar.entity.Local;
+import ar.edu.unsl.trazar.entity.Usuario;
 import ar.edu.unsl.trazar.service.LocalService;
 import org.springframework.web.bind.annotation.*;
 

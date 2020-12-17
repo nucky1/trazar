@@ -16,7 +16,7 @@ public class Local {
     private String telefono;
     @Column(length = 100)
     private String direccion;
-    @Column(length = 100)
+    @Column(length = 100,unique = true)
     private String cuit;
     @JsonIgnoreProperties({"local"})
     @OneToOne(mappedBy = "local")

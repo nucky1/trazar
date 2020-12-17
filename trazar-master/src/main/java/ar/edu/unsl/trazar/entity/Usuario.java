@@ -20,7 +20,7 @@ public class Usuario {
 
     @JsonIgnoreProperties({"usuario"})
     @OneToOne
-    @JoinColumn(name = "local_id")
+    @JoinColumn(name = "local_id",unique = true)
     private Local local;
 
     public Integer getId() {

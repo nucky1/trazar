@@ -28,8 +28,14 @@ public class UsuarioController {
     public Usuario getUsuario(@RequestParam(required = false) String userName){
         return usuarioService.find(userName);
     }
+
     @PutMapping("/{id}")
     public Usuario updateUsuario(@PathVariable Integer id,@RequestBody Usuario usuario){
         return usuarioService.updateUsuario(id,usuario);
+    }
+
+    @GetMapping("/recuperacion")
+    public Usuario recuperarUsuario(@RequestParam("cuit") String cuit){
+        return usuarioService.recuperarUsuario(cuit);
     }
 }

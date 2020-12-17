@@ -43,6 +43,8 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
             .antMatchers(HttpMethod.GET,"/v2/api-docs").permitAll()
             .antMatchers(HttpMethod.GET,"/swagger-ui.html").permitAll()
             .antMatchers(HttpMethod.GET,"/swagger-ui").permitAll()
+            .antMatchers(HttpMethod.POST,"/local").permitAll()
+            .antMatchers(HttpMethod.GET,"/usuario/recuperacion").permitAll()
             .antMatchers(HttpMethod.POST,USER).permitAll()
             .anyRequest().authenticated()
             .and()
