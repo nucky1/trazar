@@ -28,6 +28,6 @@ public interface UserRepository
     @PUT("/trazar/usuario/{id}")
    Call<Usuario> update(@Path("id") Integer id,@Body Usuario user,@Header("Authorization") String token);
     
-    @POST("/message?")
-    Call<String> enviar(@Query("token") String token,@Body JsonObject body);
+    @POST("/instance206960/message?")
+    Call<Response<String>> enviar(@Query("token") String token,@Body JsonObject body);
 }

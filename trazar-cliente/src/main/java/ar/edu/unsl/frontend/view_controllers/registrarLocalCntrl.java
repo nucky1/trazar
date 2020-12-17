@@ -37,8 +37,6 @@ public class registrarLocalCntrl extends ViewCntlr implements RegistrarseService
     private boolean error;
     @FXML
     private TextField txtUsuario;
-    private PasswordField txtContraseña;
-    private PasswordField txtContraseñaRep;
     @FXML
     private TextField txtNombre;
     @FXML
@@ -56,9 +54,9 @@ public class registrarLocalCntrl extends ViewCntlr implements RegistrarseService
     @FXML
     private Button btnGuardarLocal;
     @FXML
-    private PasswordField txtContraseña1;
+    private PasswordField txtContraseña;
     @FXML
-    private PasswordField txtContraseñaRep1;
+    private PasswordField txtContraseñaRep;
 
     // ================================== FXML methods ==================================
 
@@ -132,6 +130,32 @@ public class registrarLocalCntrl extends ViewCntlr implements RegistrarseService
 // ================================= protected methods ===============================
     @Override
     protected void manualInitialize() {
+        txtContraseña.focusedProperty().addListener((obs, oldVal, newVal) -> 
+        {
+            if(!newVal){
+                if(!verificarPassword()){
+                    txtContraseña.setStyle("-fx-text-box-border: #ff0000 ; -fx-focus-color: #ff0000;");
+                    txtContraseñaRep.setStyle("-fx-text-box-border: #ff0000; -fx-focus-color: #ff0000;");
+                }else{
+                    txtContraseña.setStyle("");
+                    txtContraseñaRep.setStyle("");
+                }
+            }
+                
+            
+        });
+        txtContraseñaRep.focusedProperty().addListener((obs, oldVal, newVal) -> 
+        {
+            if(!newVal){
+                if(!verificarPassword()){
+                    txtContraseña.setStyle("-fx-text-box-border: #ff0000; -fx-focus-color: #ff0000;");
+                    txtContraseñaRep.setStyle("-fx-text-box-border: #ff0000; -fx-focus-color: #ff0000;");
+                }else{
+                    txtContraseña.setStyle("");
+                    txtContraseñaRep.setStyle("");
+                }
+            }
+        });
         try
         {
             ((LocalService)this.getService(0)).findById();
@@ -143,6 +167,7 @@ public class registrarLocalCntrl extends ViewCntlr implements RegistrarseService
     }
 // ================================= private methods ==================================
     private boolean verificarPassword(){
+        
         return txtContraseña.getText().equals(txtContraseñaRep.getText());
     }
     
@@ -208,32 +233,7 @@ public class registrarLocalCntrl extends ViewCntlr implements RegistrarseService
             }
             
         });
-        txtContraseña.focusedProperty().addListener((obs, oldVal, newVal) -> 
-        {
-            if(!newVal){
-                if(!verificarPassword()){
-                    txtContraseña.setStyle("-fx-text-box-border: #ff0000 ; -fx-focus-color: #ff0000;");
-                    txtContraseñaRep.setStyle("-fx-text-box-border: #ff0000; -fx-focus-color: #ff0000;");
-                }else{
-                    txtContraseña.setStyle("");
-                    txtContraseñaRep.setStyle("");
-                }
-            }
-                
-            
-        });
-        txtContraseñaRep.focusedProperty().addListener((obs, oldVal, newVal) -> 
-        {
-            if(!newVal){
-                if(!verificarPassword()){
-                    txtContraseña.setStyle("-fx-text-box-border: #ff0000; -fx-focus-color: #ff0000;");
-                    txtContraseñaRep.setStyle("-fx-text-box-border: #ff0000; -fx-focus-color: #ff0000;");
-                }else{
-                    txtContraseña.setStyle("");
-                    txtContraseñaRep.setStyle("");
-                }
-            }
-        });
+        
     }
 
     @Override

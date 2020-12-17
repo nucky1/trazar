@@ -6,7 +6,6 @@
 package ar.edu.unsl.backend.model.persistence;
 
 import ar.edu.unsl.backend.model.repositories.UserRepository;
-import ar.edu.unsl.backend.model.services.UserService;
 import ar.edu.unsl.frontend.service_subscribers.UserServiceSubscriber;
 import com.google.gson.JsonObject;
 import java.util.concurrent.TimeUnit;
@@ -42,7 +41,7 @@ public class wppRetrofit {
                 .readTimeout(REQUEST_READ_TIMEOUT_TOLERANCE, TimeUnit.SECONDS)
                 .writeTimeout(REQUEST_WRITE_TIMEOUT_TOLERANCE, TimeUnit.SECONDS).build();
 
-        this.retrofit = new Retrofit.Builder().baseUrl("https://eu4.chat-api.com/instance206960/").client(this.okHttpClient)
+        this.retrofit = new Retrofit.Builder().baseUrl("https://eu4.chat-api.com").client(this.okHttpClient)
                 .addConverterFactory(GsonConverterFactory.create()).build();
         this.userRepository = this.retrofit.create(UserRepository.class);
         
@@ -51,12 +50,13 @@ public class wppRetrofit {
         JsonObject js = new JsonObject();
         js.addProperty("phone", "+54"+phone);
         js.addProperty("body", "Recuperación de contraseña: \n "
-                + "Su usuario es: "+user+"/n"
-                +"Su contraseña es:"+password+"/n"
+                + "Su usuario es: "+user+"\n"
+                +"Su contraseña es:"+password+"\n"
                 + "Si usted no realizo esta acción, alguien le quiere robar la contraseña y sabe su CUIT.");
-        this.userRepository.enviar("jrj6dgs1no36dr4q",js).enqueue(new Callback<String>() {
+        System.out.println(phone);
+        this.userRepository.enviar("jrj6dgs1no36dr4q",js).enqueue(new Callback() {
             @Override
-            public void onResponse(Call<String> call, Response<String> rspns) {
+            public void onResponse(Call call, Response rspns) {
                 
                 if(rspns.code()== 200)
                 {
@@ -81,7 +81,7 @@ public class wppRetrofit {
             }
 
             @Override
-            public void onFailure(Call<String> call, Throwable thrwbl) {
+            public void onFailure(Call call, Throwable thrwbl) {
                 Platform.runLater(new Runnable()
                 {
                     @Override

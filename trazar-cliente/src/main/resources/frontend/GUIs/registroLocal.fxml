@@ -27,8 +27,8 @@
                   <Label layoutX="220.0" layoutY="101.0" text="Repetir contraseña" />
                   <Label fx:id="alertUser" layoutX="18.0" layoutY="92.0" opacity="0.0" text="El nombre de usuario no esta disponible" />
                   <Button fx:id="btnguardarUsuario" layoutX="421.0" layoutY="118.0" mnemonicParsing="false" onAction="#updateUser" text="Guardar" />
-                  <PasswordField fx:id="txtContraseña1" layoutX="220.0" layoutY="59.0" />
-                  <PasswordField fx:id="txtContraseñaRep1" layoutX="220.0" layoutY="117.0" />
+                  <PasswordField fx:id="txtContraseña" layoutX="220.0" layoutY="59.0" />
+                  <PasswordField fx:id="txtContraseñaRep" layoutX="220.0" layoutY="117.0" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="108.0" prefWidth="337.0">

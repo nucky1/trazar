@@ -31,6 +31,6 @@ public interface LocalRepository {
     
     @POST("/trazar/local")
     Call<Local> insert(@Body Local local);
-    @POST("/trazar/usuario/recuperarcontra")
+    @GET("/trazar/usuario/recuperacion")
     Call<Usuario> recUser(@Query("cuit") String s);
 }

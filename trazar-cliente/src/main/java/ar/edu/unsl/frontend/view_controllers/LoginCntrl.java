@@ -66,7 +66,7 @@ public class LoginCntrl extends ViewCntlr implements UserServiceSubscriber {
     private void sendWpp(ActionEvent event) {
         String res = JOptionPane.showInputDialog(null, "Ingrese su número de CUIT", "Recuperar contraseña");
         if(this.getExpressionChecker().onlyNumbers(res, false)){
-           ((LocalService)this.getService(0)).recuperarUserAndPass(res);
+           ((LocalService)this.getService(1)).recuperarUserAndPass(res);
         }else{
             CustomAlert alerta = new CustomAlert(Alert.AlertType.ERROR, "Error", "El CUIT ingresado no es valido");
             try {

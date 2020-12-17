@@ -1,5 +1,6 @@
 package com.mycompany.trazar.cliente;
 
+import ar.edu.unsl.backend.model.services.LocalService;
 import java.net.URL;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -24,7 +25,7 @@ public class App extends Application
     public static final String GUIs_LOCATION = App.class.getResource("")+ "../../../../frontend/GUIs/";
     public static final String FILE_EXTENSION = ".fxml";
     //public static final String API_HOSTNAME = "http://localhost:8080";
-    public static final String API_HOSTNAME = "http://35.184.148.44:8080/trazar/";
+    public static final String API_HOSTNAME = "http://35.184.148.44:8080";
 
     @Override
     public void start(final Stage stage) throws MalformedURLException, IOException
@@ -55,8 +56,11 @@ public class App extends Application
             });
             
             Service userService = new UserService();
+            Service localService = new LocalService();
             viewCtrller.addService(userService);
+            viewCtrller.addService(localService);
             userService.setServiceSubscriber(viewCtrller);
+            localService.setServiceSubscriber(viewCtrller);
             userService.setExpressionChecker(ExpressionChecker.getExpressionChecker());
             
             stage.show();

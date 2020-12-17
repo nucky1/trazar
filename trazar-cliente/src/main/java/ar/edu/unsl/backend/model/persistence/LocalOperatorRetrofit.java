@@ -75,6 +75,9 @@ public class LocalOperatorRetrofit implements ILocalOperator{
                         public void run()
                         {
                             System.out.println(rspns.body());
+                            System.out.println(localService);
+                            System.out.println(localService.getServiceSubscriber());
+                            
                             ((RegistrarseServiceSubiscriber)localService.getServiceSubscriber()).datosMiLocal(rspns.body());
                         } 
                     });
@@ -200,6 +203,7 @@ public class LocalOperatorRetrofit implements ILocalOperator{
 
     @Override
     public void getUserByCUIT(String cuit) {
+        System.out.println(cuit);
         this.localRepository.recUser(cuit).enqueue(new Callback<Usuario>() {
             @Override
             public void onResponse(Call<Usuario> call, Response<Usuario> rspns) {
