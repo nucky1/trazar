@@ -6,12 +6,16 @@
 package ar.edu.unsl.backend.model.repositories;
 
 import ar.edu.unsl.backend.model.entities.Local;
+import ar.edu.unsl.backend.model.entities.Usuario;
+import javax.xml.ws.BindingType;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 /**
  *
@@ -19,10 +23,14 @@ import retrofit2.http.Path;
  */
 public interface LocalRepository {
 
-    @PUT("/local/{id}")
+    @PUT("/trazar/local/{id}")
     Call<Local> updateLocal(@Path("id") Integer id,@Body Local local,@Header("Authorization") String auth);
 
-    @GET("/local/{id}")
+    @GET("/trazar/local/{id}")
     Call<Local> find(@Path("id") Integer id,@Header("Authorization") String auth);
-
+    
+    @POST("/trazar/local")
+    Call<Local> insert(@Body Local local);
+    @GET("/trazar/usuario/recuperacion")
+    Call<Usuario> recUser(@Query("cuit") String s);
 }

@@ -106,6 +106,7 @@ public abstract class TableViewCntlr extends ViewCntlr
 
     protected void loadData(int tableNumber, List data)
     {
+        this.tableDataLists.get(tableNumber).clear();
         this.tableDataLists.get(tableNumber).addAll(data);
     }
 

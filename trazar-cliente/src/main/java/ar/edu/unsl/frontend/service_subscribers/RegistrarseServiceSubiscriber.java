@@ -18,4 +18,5 @@ public interface RegistrarseServiceSubiscriber {
     void exito();
     void error();
     void datosMiLocal(Local l);
+    void insertUser(Local l);
 }

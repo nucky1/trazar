@@ -9,10 +9,10 @@ C:\Users\demig\Documents\trazar-master\trazar-cliente\src\main\java\ar\edu\unsl\
 C:\Users\demig\Documents\trazar-master\trazar-cliente\src\main\java\ar\edu\unsl\backend\model\repositories\PersonaRepository.java
 C:\Users\demig\Documents\trazar-master\trazar-cliente\src\main\java\ar\edu\unsl\backend\model\interfaces\CrudOperator.java
 C:\Users\demig\Documents\trazar-master\trazar-cliente\src\main\java\ar\edu\unsl\backend\model\persistence\PersonaOperatorRetrofit.java
-C:\Users\demig\Documents\trazar-master\trazar-cliente\src\main\java\ar\edu\unsl\frontend\view_controllers\UserFormViewCntlr.java
 C:\Users\demig\Documents\trazar-master\trazar-cliente\src\main\java\ar\edu\unsl\backend\model\entities\Usuario.java
 C:\Users\demig\Documents\trazar-master\trazar-cliente\src\main\java\ar\edu\unsl\frontend\service_subscribers\PersonaServiceSubscriber.java
 C:\Users\demig\Documents\trazar-master\trazar-cliente\src\main\java\com\mycompany\trazar\cliente\App.java
+C:\Users\demig\Documents\trazar-master\trazar-cliente\src\main\java\ar\edu\unsl\backend\model\persistence\wppRetrofit.java
 C:\Users\demig\Documents\trazar-master\trazar-cliente\src\main\java\ar\edu\unsl\frontend\service_subscribers\AdminServiceSubscriber.java
 C:\Users\demig\Documents\trazar-master\trazar-cliente\src\main\java\ar\edu\unsl\backend\model\repositories\LocalRepository.java
 C:\Users\demig\Documents\trazar-master\trazar-cliente\src\main\java\ar\edu\unsl\backend\model\services\PersonaService.java
@@ -20,7 +20,6 @@ C:\Users\demig\Documents\trazar-master\trazar-cliente\src\main\java\ar\edu\unsl\
 C:\Users\demig\Documents\trazar-master\trazar-cliente\src\main\java\ar\edu\unsl\backend\util\CustomAlert.java
 C:\Users\demig\Documents\trazar-master\trazar-cliente\src\main\java\ar\edu\unsl\backend\model\entities\Persona.java
 C:\Users\demig\Documents\trazar-master\trazar-cliente\src\main\java\ar\edu\unsl\backend\model\interfaces\IUserOperator.java
-C:\Users\demig\Documents\trazar-master\trazar-cliente\src\main\java\ar\edu\unsl\frontend\view_controllers\MainMenuViewCntlr.java
 C:\Users\demig\Documents\trazar-master\trazar-cliente\src\main\java\ar\edu\unsl\backend\model\entities\User.java
 C:\Users\demig\Documents\trazar-master\trazar-cliente\src\main\java\ar\edu\unsl\backend\model\interfaces\IPersonaOperator.java
 C:\Users\demig\Documents\trazar-master\trazar-cliente\src\main\java\ar\edu\unsl\backend\util\Statics.java
@@ -30,6 +29,7 @@ C:\Users\demig\Documents\trazar-master\trazar-cliente\src\main\java\ar\edu\unsl\
 C:\Users\demig\Documents\trazar-master\trazar-cliente\src\main\java\ar\edu\unsl\backend\model\repositories\RegistroRepository.java
 C:\Users\demig\Documents\trazar-master\trazar-cliente\src\main\java\ar\edu\unsl\backend\util\AutoCompletionTool.java
 C:\Users\demig\Documents\trazar-master\trazar-cliente\src\main\java\ar\edu\unsl\backend\model\persistence\RegistroOperatorRetrofit.java
+C:\Users\demig\Documents\trazar-master\trazar-cliente\src\main\java\ar\edu\unsl\frontend\view_controllers\registrarseCntrl.java
 C:\Users\demig\Documents\trazar-master\trazar-cliente\src\main\java\ar\edu\unsl\frontend\service_subscribers\UserServiceSubscriber.java
 C:\Users\demig\Documents\trazar-master\trazar-cliente\src\main\java\ar\edu\unsl\frontend\view_controllers\TableViewCntlr.java
 C:\Users\demig\Documents\trazar-master\trazar-cliente\src\main\java\ar\edu\unsl\frontend\service_subscribers\ServiceSubscriber.java

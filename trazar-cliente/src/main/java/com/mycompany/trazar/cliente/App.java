@@ -1,5 +1,6 @@
 package com.mycompany.trazar.cliente;
 
+import ar.edu.unsl.backend.model.services.LocalService;
 import java.net.URL;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -18,12 +19,14 @@ import ar.edu.unsl.backend.model.services.UserService;
 import ar.edu.unsl.frontend.view_controllers.LoginCntrl;
 import ar.edu.unsl.frontend.view_controllers.ViewCntlr;
 import java.net.MalformedURLException;
+import javax.swing.JOptionPane;
 
 public class App extends Application
 {
     public static final String GUIs_LOCATION = App.class.getResource("")+ "../../../../frontend/GUIs/";
     public static final String FILE_EXTENSION = ".fxml";
-    public static final String API_HOSTNAME = "http://localhost:8080";
+    //public static final String API_HOSTNAME = "http://localhost:8080";
+    public static final String API_HOSTNAME = "http://35.184.148.44:8080";
 
     @Override
     public void start(final Stage stage) throws MalformedURLException, IOException
@@ -41,7 +44,7 @@ public class App extends Application
                 @Override
                 public void handle(WindowEvent e)
                 {
-                    new CustomAlert(AlertType.INFORMATION, "EXIT", "Do you want to close this system?")
+                    new CustomAlert(AlertType.INFORMATION, "EXIT", "¿Estas seguro que desea salir?")
                             .customShow().ifPresent(response ->
                             {
                                 if(response == ButtonType.OK)
@@ -54,8 +57,11 @@ public class App extends Application
             });
             
             Service userService = new UserService();
+            Service localService = new LocalService();
             viewCtrller.addService(userService);
+            viewCtrller.addService(localService);
             userService.setServiceSubscriber(viewCtrller);
+            localService.setServiceSubscriber(viewCtrller);
             userService.setExpressionChecker(ExpressionChecker.getExpressionChecker());
             
             stage.show();
@@ -65,10 +71,7 @@ public class App extends Application
     public static void main( String[] args )
     {
         try{
-        System.out.println(GUIs_LOCATION);
-            
-        
-        launch();
+            launch();
         }catch(Exception e){
             e.printStackTrace();
         }

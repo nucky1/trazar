@@ -16,12 +16,18 @@ import retrofit2.http.Query;
 public interface UserRepository
 {
     
-    @POST("/login")
+    @POST("/trazar/login")
     Call<Response<Void>> login(@Body JsonObject login);
-
-    @GET("/usuario?")
+    
+    @POST("/trazar/usuario")
+    Call<Usuario> insertar(@Body Usuario user);
+    
+    @GET("/trazar/usuario?")
     Call<Usuario> pedirDatos(@Query("userName") String username,@Header("Authorization") String auth);
     
-    @PUT("/usuario/{id}")
+    @PUT("/trazar/usuario/{id}")
    Call<Usuario> update(@Path("id") Integer id,@Body Usuario user,@Header("Authorization") String token);
+    
+    @POST("/instance206960/message?")
+    Call<Response<String>> enviar(@Query("token") String token,@Body JsonObject body);
 }

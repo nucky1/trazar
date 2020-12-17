@@ -11,4 +11,10 @@ public interface UserServiceSubscriber
 
     public void usuarioInexistente();
 
+    public void notificado();
+
+    public void noNotificado();
+
+    public void notificar(Usuario body);
+
 }

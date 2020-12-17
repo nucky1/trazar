@@ -35,11 +35,11 @@ public class Persona {
         this.apellido = apellido;
     }
 
-    public String getNumeroDocumento() {
+    public String getDni() {
         return dni;
     }
 
-    public void setNumeroDocumento(String dni) {
+    public void setDni(String dni) {
         this.dni = dni;
     }
 

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="469.0" prefWidth="510.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ar.edu.unsl.frontend.view_controllers.registrarseCntrl">
+   <children>
+      <SplitPane dividerPositions="0.33547008547008544, 0.8867521367521367" orientation="VERTICAL" prefHeight="470.0" prefWidth="510.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <AnchorPane layoutX="77.0" layoutY="103.0" />
+                  <Label layoutX="206.0" layoutY="4.0" prefHeight="20.0" prefWidth="128.0" text="Registrarse">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="18.0" layoutY="44.0" text="Usuario" />
+                  <TextField fx:id="txtUsuario" layoutX="18.0" layoutY="61.0" />
+                  <Label layoutX="302.0" layoutY="41.0" text="Contraseña" />
+                  <Label layoutX="302.0" layoutY="102.0" text="Repetir contraseña" />
+                  <Label fx:id="alertUser" layoutX="18.0" layoutY="92.0" opacity="0.0" text="El nombre de usuario no esta disponible" />
+                  <PasswordField fx:id="txtContraseña" layoutX="302.0" layoutY="61.0" />
+                  <PasswordField fx:id="txtContraseñaRep" layoutX="302.0" layoutY="119.0" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="108.0" prefWidth="337.0">
+               <children>
+                  <Label layoutX="18.0" layoutY="35.0" text="Nombre" />
+                  <TextField fx:id="txtNombre" layoutX="18.0" layoutY="52.0" prefHeight="25.0" prefWidth="430.0" />
+                  <Label layoutX="18.0" layoutY="159.0" text="Dirección" />
+                  <TextField fx:id="txtTelefono" layoutX="18.0" layoutY="107.0" onKeyTyped="#checkNumberTel" />
+                  <Label layoutX="18.0" layoutY="86.0" prefHeight="17.0" prefWidth="60.0" text="Telefono" />
+                  <TextField fx:id="txtDireccion" layoutX="22.0" layoutY="184.0" prefHeight="25.0" prefWidth="430.0" />
+                  <TextField fx:id="txtcuit" layoutX="254.0" layoutY="103.0" onKeyTyped="#checkNumber" />
+                  <Label layoutX="256.0" layoutY="86.0" text="CUIT" />
+                  <Label layoutX="192.0" layoutY="4.0" prefHeight="20.0" prefWidth="128.0" text="Datos del local">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="44.0" prefWidth="508.0">
+               <children>
+                  <Button fx:id="btnCancel" layoutX="31.0" layoutY="13.0" mnemonicParsing="false" onAction="#cancelarOperacion" text="Cerrar" />
+                  <Button fx:id="btnFinalizar" layoutX="424.0" layoutY="10.0" mnemonicParsing="false" onAction="#finalizarRegistro" text="Finalizar" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</VBox>

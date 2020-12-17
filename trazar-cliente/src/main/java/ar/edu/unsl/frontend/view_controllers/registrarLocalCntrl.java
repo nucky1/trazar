@@ -8,13 +8,10 @@ package ar.edu.unsl.frontend.view_controllers;
 import ar.edu.unsl.backend.model.entities.Local;
 import ar.edu.unsl.backend.model.entities.Usuario;
 import ar.edu.unsl.backend.model.services.LocalService;
-import ar.edu.unsl.backend.model.services.RegistroService;
 import ar.edu.unsl.backend.model.services.UserService;
 import ar.edu.unsl.backend.util.CustomAlert;
 import ar.edu.unsl.backend.util.Statics;
-import java.awt.Color;
 import java.net.URL;
-import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,7 +23,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Paint;
 import ar.edu.unsl.frontend.service_subscribers.RegistrarseServiceSubiscriber;
-import com.sun.org.apache.bcel.internal.generic.INSTANCEOF;
+import javafx.scene.control.PasswordField;
+import javafx.scene.input.KeyEvent;
 
 /**
  * FXML Controller class
@@ -40,10 +38,6 @@ public class registrarLocalCntrl extends ViewCntlr implements RegistrarseService
     @FXML
     private TextField txtUsuario;
     @FXML
-    private TextField txtContraseña;
-    @FXML
-    private TextField txtContraseñaRep;
-    @FXML
     private TextField txtNombre;
     @FXML
     private TextField txtTelefono;
@@ -55,27 +49,49 @@ public class registrarLocalCntrl extends ViewCntlr implements RegistrarseService
     private Button btnCancel;
     @FXML
     private Label alertUser;
-    // ================================== FXML methods ==================================
     @FXML
     private Button btnguardarUsuario;
     @FXML
     private Button btnGuardarLocal;
+    @FXML
+    private PasswordField txtContraseña;
+    @FXML
+    private PasswordField txtContraseñaRep;
 
+    // ================================== FXML methods ==================================
+
+    @FXML
+    private void checkNumberTel(KeyEvent event) {
+        String s = event.getCharacter();
+        if(s.length()!= 1)
+            event.consume();
+        char c = s.charAt(0);
+        if((c<'0'||c>'9'))
+            event.consume();
+    }
+
+    @FXML
+    private void checkNumber(KeyEvent event) {
+        String s = event.getCharacter();
+        if(s.length()!= 1)
+            event.consume();
+        char c = s.charAt(0);
+        if((c<'0'||c>'9'))
+            event.consume();
+    }
     @FXML
     private void cancelarOperacion(ActionEvent event) {
         this.getStage().close();
     }
     @FXML
     private void updateUser(ActionEvent event) {
-        if(miLocal == null){
-            miLocal = new Local();
-        }
         if(!error && verificarPassword()){
             
             Usuario user = new Usuario();
             user.setUserName(txtUsuario.getText());
             user.setPassword(txtContraseña.getText());
             user.setId(Statics.getUser().getId());
+            user.setLocal(Statics.getUser().getLocal());
             try {
                 ((UserService)this.getService(1)).update(user);
             } catch (Exception ex) {
@@ -100,21 +116,47 @@ public class registrarLocalCntrl extends ViewCntlr implements RegistrarseService
         if(miLocal == null){
             miLocal = new Local();
         }
-            miLocal.setId(Statics.getUser().getId_local());
-            miLocal.setTelefono(txtTelefono.getText());
-            miLocal.setCuit(txtcuit.getText());
-            miLocal.setDireccion(txtDireccion.getText());
-            miLocal.setNombre(txtNombre.getText());
-            try {
-                ((LocalService)this.getService(0)).update(miLocal);
-            } catch (Exception ex) {
-                Logger.getLogger(registrarLocalCntrl.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        miLocal.setId(Statics.getUser().getId_local());
+        miLocal.setTelefono(txtTelefono.getText());
+        miLocal.setCuit(txtcuit.getText());
+        miLocal.setDireccion(txtDireccion.getText());
+        miLocal.setNombre(txtNombre.getText());
+        try {
+            ((LocalService)this.getService(0)).update(miLocal);
+        } catch (Exception ex) {
+            Logger.getLogger(registrarLocalCntrl.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
  
 // ================================= protected methods ===============================
     @Override
     protected void manualInitialize() {
+        txtContraseña.focusedProperty().addListener((obs, oldVal, newVal) -> 
+        {
+            if(!newVal){
+                if(!verificarPassword()){
+                    txtContraseña.setStyle("-fx-text-box-border: #ff0000 ; -fx-focus-color: #ff0000;");
+                    txtContraseñaRep.setStyle("-fx-text-box-border: #ff0000; -fx-focus-color: #ff0000;");
+                }else{
+                    txtContraseña.setStyle("");
+                    txtContraseñaRep.setStyle("");
+                }
+            }
+                
+            
+        });
+        txtContraseñaRep.focusedProperty().addListener((obs, oldVal, newVal) -> 
+        {
+            if(!newVal){
+                if(!verificarPassword()){
+                    txtContraseña.setStyle("-fx-text-box-border: #ff0000; -fx-focus-color: #ff0000;");
+                    txtContraseñaRep.setStyle("-fx-text-box-border: #ff0000; -fx-focus-color: #ff0000;");
+                }else{
+                    txtContraseña.setStyle("");
+                    txtContraseñaRep.setStyle("");
+                }
+            }
+        });
         try
         {
             ((LocalService)this.getService(0)).findById();
@@ -126,6 +168,7 @@ public class registrarLocalCntrl extends ViewCntlr implements RegistrarseService
     }
 // ================================= private methods ==================================
     private boolean verificarPassword(){
+        
         return txtContraseña.getText().equals(txtContraseñaRep.getText());
     }
     
@@ -162,8 +205,8 @@ public class registrarLocalCntrl extends ViewCntlr implements RegistrarseService
             
         } catch (InterruptedException ex) {
             Logger.getLogger(registroFormCntrl.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+        } 
+   }
 
     @Override
     public void error() {
@@ -191,34 +234,7 @@ public class registrarLocalCntrl extends ViewCntlr implements RegistrarseService
             }
             
         });
-        txtContraseña.focusedProperty().addListener((obs, oldVal, newVal) -> 
-        {
-            if(!newVal){
-                if(!verificarPassword()){
-                    txtContraseña.setStyle("-fx-text-box-border: #ff0000 ; -fx-focus-color: #ff0000;");
-                    txtContraseñaRep.setStyle("-fx-text-box-border: #ff0000; -fx-focus-color: #ff0000;");
-                }else{
-                    txtContraseña.setStyle("");
-                    txtContraseñaRep.setStyle("");
-                }
-            }
-                
-            
-        });
-        txtContraseñaRep.focusedProperty().addListener((obs, oldVal, newVal) -> 
-        {
-            if(!newVal){
-                if(!verificarPassword()){
-                    txtContraseña.setStyle("-fx-text-box-border: #ff0000; -fx-focus-color: #ff0000;");
-                    txtContraseñaRep.setStyle("-fx-text-box-border: #ff0000; -fx-focus-color: #ff0000;");
-                }else{
-                    txtContraseña.setStyle("");
-                    txtContraseñaRep.setStyle("");
-                }
-            }
-               
-            
-        });
+        
     }
 
     @Override
@@ -230,6 +246,16 @@ public class registrarLocalCntrl extends ViewCntlr implements RegistrarseService
        txtTelefono.setText(miLocal.getTelefono());
        txtcuit.setText(miLocal.getCuit());
        
+    }
+
+    @Override
+    public void insertUser(Local l) {
+
+    }
+
+    @Override
+    public void cargarCosas(String... cosas) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 

@@ -12,31 +12,32 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="311.0" prefWidth="241.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ar.edu.unsl.frontend.view_controllers.LoginCntrl">
    <children>
-      <SplitPane dividerPositions="0.39158576051779936, 0.7346278317152104" orientation="VERTICAL" prefHeight="405.0" prefWidth="339.0">
+      <SplitPane dividerPositions="0.343042071197411, 0.7022653721682848" orientation="VERTICAL" prefHeight="405.0" prefWidth="339.0">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="84.0" prefWidth="239.0">
                <children>
-                  <AnchorPane layoutX="77.0" layoutY="103.0" />
                   <Label layoutX="75.0" layoutY="14.0" prefHeight="20.0" prefWidth="92.0" text="Iniciar sesión">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <Label layoutX="46.0" layoutY="51.0" text="Usiario" />
-                  <TextField fx:id="username" layoutX="46.0" layoutY="72.0" />
+                  <Label layoutX="45.0" layoutY="43.0" text="Usuario" />
+                  <TextField fx:id="username" layoutX="45.0" layoutY="64.0" />
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="108.0" prefWidth="337.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="105.0" prefWidth="239.0">
                <children>
                   <AnchorPane layoutX="74.0" layoutY="12.0" />
-                  <Label layoutX="44.0" layoutY="14.0" text="Contraseña" />
-                  <PasswordField fx:id="password" layoutX="45.0" layoutY="50.0" />
+                  <Label layoutX="45.0" text="Contraseña" />
+                  <PasswordField fx:id="password" layoutX="45.0" layoutY="17.0" />
+                  <Hyperlink fx:id="forgetPass" layoutX="49.0" layoutY="53.0" onAction="#sendWpp" text="¿Olvidaste la contraseña?" />
+                  <Label fx:id="alertError" layoutX="23.0" layoutY="83.0" opacity="0.0" prefHeight="17.0" prefWidth="195.0" text="Usuario y/o contraseña incorrectos" textFill="RED" />
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="206.0" prefWidth="337.0">
+            <AnchorPane prefHeight="144.0" prefWidth="239.0">
                <children>
-                  <Button fx:id="iniciar" layoutX="87.0" layoutY="40.0" mnemonicParsing="false" onAction="#loguear" text="Iniciar" />
-                  <Hyperlink fx:id="forgetPass" layoutX="49.0" layoutY="3.0" onAction="#sendEmail" text="¿Olvidaste la contraseña?" />
+                  <Hyperlink fx:id="registrarse" layoutX="78.0" layoutY="3.0" onAction="#registrarse" text="Registrarse" />
+                  <Button fx:id="iniciar" layoutX="71.0" layoutY="40.0" mnemonicParsing="false" onAction="#loguear" prefHeight="25.0" prefWidth="81.0" text="Iniciar" />
                </children>
             </AnchorPane>
         </items>

@@ -20,4 +20,8 @@ public interface ILocalOperator {
     public List<Local> findAll();
 
     public void update(Local l);
+
+    public void insert(Local miLocal);
+
+    public void getUserByCUIT(String cuit);
 }
