@@ -256,5 +256,7 @@ public class registrarLocalCntrl extends ViewCntlr implements RegistrarseService
     public void cargarCosas(String... cosas) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+
     
 }

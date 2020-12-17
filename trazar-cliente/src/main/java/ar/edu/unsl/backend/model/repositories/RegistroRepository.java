@@ -22,12 +22,12 @@ import retrofit2.http.Query;
  */
 public interface RegistroRepository {
 
-    @GET("/registro/local/{id}")
+    @GET("/trazar/registro/local/{id}")
     Call<List<Persona>> getRegistros(@Path("id") Integer id,
                                @Query("fechaDesde") String fechaDesde,
                                @Query("fechaHasta") String fechaHasta,
                                @Header("Authorization") String auth);
 
-    @POST("/registro")
+    @POST("/trazar/registro")
     Call<Registro> createRegistro(@Body Registro registro,@Header("Authorization") String auth);
 }

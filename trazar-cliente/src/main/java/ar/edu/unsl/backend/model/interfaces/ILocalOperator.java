@@ -22,4 +22,6 @@ public interface ILocalOperator {
     public void update(Local l);
 
     public void insert(Local miLocal);
+
+    public void getUserByCUIT(String cuit);
 }

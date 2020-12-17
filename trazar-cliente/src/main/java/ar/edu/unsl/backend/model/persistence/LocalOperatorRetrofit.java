@@ -6,11 +6,13 @@
 package ar.edu.unsl.backend.model.persistence;
 
 import ar.edu.unsl.backend.model.entities.Local;
+import ar.edu.unsl.backend.model.entities.Usuario;
 import ar.edu.unsl.backend.model.interfaces.ILocalOperator;
 import ar.edu.unsl.backend.model.repositories.LocalRepository;
 import ar.edu.unsl.backend.model.services.LocalService;
 import ar.edu.unsl.backend.util.Statics;
 import ar.edu.unsl.frontend.service_subscribers.RegistrarseServiceSubiscriber;
+import ar.edu.unsl.frontend.service_subscribers.UserServiceSubscriber;
 import com.mycompany.trazar.cliente.App;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -55,7 +57,7 @@ public class LocalOperatorRetrofit implements ILocalOperator{
 
         this.retrofit = new Retrofit.Builder().baseUrl(App.API_HOSTNAME).client(this.okHttpClient)
                 .addConverterFactory(GsonConverterFactory.create()).build();
-
+        retrofit.baseUrl();
         this.localRepository = this.retrofit.create(LocalRepository.class);
     }
     
@@ -192,6 +194,46 @@ public class LocalOperatorRetrofit implements ILocalOperator{
                         localService.getServiceSubscriber().showError("F: Al guardar local (onFailure)", null, new Exception(thrwbl));
                     } 
                 });
+            }
+        });
+    }
+
+    @Override
+    public void getUserByCUIT(String cuit) {
+        this.localRepository.recUser(cuit).enqueue(new Callback<Usuario>() {
+            @Override
+            public void onResponse(Call<Usuario> call, Response<Usuario> rspns) {
+                if(rspns.code()== 200)
+                {
+                    Platform.runLater(new Runnable()
+                    {
+                        @Override
+                        public void run()
+                        {
+                            ((UserServiceSubscriber)localService.getServiceSubscriber()).notificar(rspns.body());
+                        } 
+                    });
+                }else{
+                    Platform.runLater(new Runnable()
+                    {
+                        @Override
+                        public void run()
+                        {
+                            ((UserServiceSubscriber)localService.getServiceSubscriber()).noNotificado();
+                        } 
+                    });
+                }
+            }
+            @Override
+            public void onFailure(Call<Usuario> call, Throwable thrwbl) {
+               Platform.runLater(new Runnable()
+                {
+                    @Override
+                    public void run()
+                    {
+                        localService.getServiceSubscriber().showError("F: Al guardar local (onFailure)", null, new Exception(thrwbl));
+                    } 
+                }); 
             }
         });
     }

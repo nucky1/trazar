@@ -20,7 +20,17 @@ public class Statics {
     
     public static String dateFormat(LocalDate date, int hora, int min){
         String fecha = date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-        fecha += " "+hora+":"+min+":00.0";
+        String ceroAux="0";
+        if(hora < 10){
+            fecha += " "+"0"+hora;
+        }else{
+            fecha += " "+hora;
+        }
+        if(min < 10){
+            fecha +=":0"+min+":00";;
+        }else{
+            fecha +=min+":00";;
+        }
         return fecha;
 //Locale locale = new Locale("us", "US");
         

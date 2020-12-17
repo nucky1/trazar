@@ -78,7 +78,7 @@ public class RegistroOperatorRetrofit implements IRegistroOperator{
                         @Override
                         public void run()
                         {
-                            registroService.getServiceSubscriber().showError("Cannot obtain visitas ", rspns.errorBody().toString(), new Exception("Error response"));
+                            System.out.println("asdasdasd");
                         } 
                     });
                 }

@@ -123,28 +123,6 @@ public class registrarseCntrl extends ViewCntlr implements RegistrarseServiceSub
     @Override
     protected void manualInitialize() {
         
-    }
-// ================================= private methods ==================================
-    private boolean verificarPassword(){
-        return txtContraseña.getText().equals(txtContraseñaRep.getText());
-    }
-// ================================= public methods ==================================
-    public void init()
-    {
-        this.manualInitialize();
-    }
-    @Override
-    public void customInitialize(URL location, ResourceBundle resources) throws Exception {
-        txtUsuario.focusedProperty().addListener((obs, oldVal, newVal) -> 
-        {
-            try {
-                if(!newVal)
-                    ((UserService)this.getService(1)).searchUser(txtUsuario.getText());
-            } catch (Exception ex) {
-                Logger.getLogger(registrarLocalCntrl.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-        });
         txtContraseña.focusedProperty().addListener((obs, oldVal, newVal) -> 
         {
             if(!newVal){
@@ -171,6 +149,19 @@ public class registrarseCntrl extends ViewCntlr implements RegistrarseServiceSub
                 }
             }
         });
+    }
+// ================================= private methods ==================================
+    private boolean verificarPassword(){
+        return txtContraseña.getText().equals(txtContraseñaRep.getText());
+    }
+// ================================= public methods ==================================
+    public void init()
+    {
+        this.manualInitialize();
+    }
+    @Override
+    public void customInitialize(URL location, ResourceBundle resources) throws Exception {
+        
     }
 
     @Override
@@ -236,4 +227,5 @@ public class registrarseCntrl extends ViewCntlr implements RegistrarseServiceSub
     public void cargarCosas(String... cosas) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
 }

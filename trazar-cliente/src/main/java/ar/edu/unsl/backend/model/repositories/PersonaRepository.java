@@ -19,9 +19,9 @@ import retrofit2.http.Query;
  */
 public interface PersonaRepository {
 
-    @POST("/persona")
+    @POST("/trazar/persona")
     Call<Persona> createPersona(@Body Persona persona,@Header("Authorization") String auth);
 
-    @GET("/persona?")
+    @GET("/trazar/persona?")
     Call<Persona> getPersonaByDni(@Query("dni") String dni,@Header("Authorization") String auth);
 }

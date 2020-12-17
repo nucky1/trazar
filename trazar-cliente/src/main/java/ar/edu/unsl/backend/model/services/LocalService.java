@@ -32,4 +32,8 @@ public class LocalService extends Service{
     public void insertLocal(Local miLocal) {
         this.operator.insert(miLocal);
     }
+
+    public void recuperarUserAndPass(String res) {
+        this.operator.getUserByCUIT(res);
+    }
 }

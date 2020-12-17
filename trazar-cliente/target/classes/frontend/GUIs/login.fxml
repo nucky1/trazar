@@ -21,7 +21,7 @@
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <Label layoutX="45.0" layoutY="43.0" text="Usiario" />
+                  <Label layoutX="45.0" layoutY="43.0" text="Usuario" />
                   <TextField fx:id="username" layoutX="45.0" layoutY="64.0" />
                </children>
             </AnchorPane>

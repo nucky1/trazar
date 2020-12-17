@@ -371,7 +371,7 @@ public class UserOperatorRetrofit implements IUserOperator
                         @Override
                         public void run()
                         {
-                            ((RegistrarseServiceSubiscriber)userService.getServiceSubscriber()).error();
+                            ((RegistrarseServiceSubiscriber)userService.getServiceSubscriber()).usuarioOcupado();
                         } 
                     });
                 }

@@ -135,6 +135,8 @@ public class localMainViewCntrl extends TableViewCntlr implements LocalServiceSu
     private void buscarVisitas(ActionEvent event) {
         String f= Statics.dateFormat(fromDate.getValue(), Integer.parseInt(horaFrom.getEditor().getText()),Integer.parseInt(minFrom.getEditor().getText()));
         String t= Statics.dateFormat(toDate.getValue(), Integer.parseInt(horaTo.getEditor().getText()),Integer.parseInt(minTo.getEditor().getText()) );
+        System.out.println(f);
+        System.out.println(t);
         ((RegistroService)this.getService(1)).buscarEntreFechas(f,t);
     }
 // ================================= protected methods ===============================
