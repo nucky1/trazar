@@ -19,6 +19,7 @@ import ar.edu.unsl.backend.model.services.UserService;
 import ar.edu.unsl.frontend.view_controllers.LoginCntrl;
 import ar.edu.unsl.frontend.view_controllers.ViewCntlr;
 import java.net.MalformedURLException;
+import javax.swing.JOptionPane;
 
 public class App extends Application
 {
@@ -70,8 +71,7 @@ public class App extends Application
     public static void main( String[] args )
     {
         try{
-        System.out.println(GUIs_LOCATION);
-        launch();
+            launch();
         }catch(Exception e){
             e.printStackTrace();
         }

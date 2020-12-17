@@ -163,7 +163,7 @@ public class localMainViewCntrl extends TableViewCntlr implements LocalServiceSu
     }
     // ================================= private methods ==================================
     private void volverLogin(){
-        ViewCntlr v = this.createStage("Login", "login", new UserService());
+        ViewCntlr v = this.createStage("Login", "login", new UserService(), new LocalService());
         v.manualInitialize();
         v.getStage().setOnCloseRequest(new EventHandler<WindowEvent>()
             {

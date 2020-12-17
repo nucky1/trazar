@@ -91,6 +91,7 @@ public class registrarLocalCntrl extends ViewCntlr implements RegistrarseService
             user.setUserName(txtUsuario.getText());
             user.setPassword(txtContraseña.getText());
             user.setId(Statics.getUser().getId());
+            user.setLocal(Statics.getUser().getLocal());
             try {
                 ((UserService)this.getService(1)).update(user);
             } catch (Exception ex) {

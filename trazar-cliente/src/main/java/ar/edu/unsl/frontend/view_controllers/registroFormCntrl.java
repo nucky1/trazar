@@ -85,7 +85,7 @@ public class registroFormCntrl extends ViewCntlr implements PersonaServiceSubscr
         p.setDireccion(txtDireccion.getText());
         p.setId(idPersona);
         p.setTelefono(txtTelefono.getText());
-        p.setNumeroDocumento(txtDocumento.getText());
+        p.setDni(txtDocumento.getText());
         ((PersonaService)this.getService(0)).insertarPersona(p);
     }
 
